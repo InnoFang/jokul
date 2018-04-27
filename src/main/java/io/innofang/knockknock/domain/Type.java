@@ -19,6 +19,7 @@ public class Type {
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     @JsonIgnore
