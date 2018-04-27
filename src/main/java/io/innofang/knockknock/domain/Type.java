@@ -29,6 +29,13 @@ public class Type {
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private Set<Movie> movies;
 
+    public Type() {
+    }
+
+    public Type(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
