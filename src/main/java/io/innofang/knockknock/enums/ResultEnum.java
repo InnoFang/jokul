@@ -6,7 +6,7 @@ package io.innofang.knockknock.enums;
 public enum ResultEnum {
     SIGN_UP(0, "successfully to add user"),
     SIGN_IN(0, "successfully to login"),
-    GET_ARTICLE_LIST(0, "successfully to get article list"),
+    GET_MOVIE_LIST(0, "successfully to get movie list"),
     USER_DUPLICATE(-1, "user duplicated"),
     USER_MISSED(-2, "user missed"),
     WRONG_PASSWORD(-3, "wrong password"),
