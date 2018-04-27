@@ -1,6 +1,7 @@
 package io.innofang.knockknock.repositories;
 
 import io.innofang.knockknock.domain.Type;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,8 @@ public class TypeRepositoryTest {
 
     private List<Type> typeList = new ArrayList<>();
 
-    {
+    @Before
+    public void init(){
         typeList.add(new Type("剧情"));
         typeList.add(new Type("喜剧"));
         typeList.add(new Type("惊悚"));

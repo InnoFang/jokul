@@ -1,6 +1,7 @@
 package io.innofang.knockknock.repositories;
 
 import io.innofang.knockknock.domain.Movie;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +26,8 @@ public class MovieRepositoryTest {
 
     private List<Movie> movies = new ArrayList<>();
 
-    {
+    @Before
+    public void init(){
         Movie inception = new Movie();
         inception.setTitle("盗梦空间");
         inception.setScore(9.2);
