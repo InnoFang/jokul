@@ -27,4 +27,11 @@ public class ResultUtil {
         return result;
     }
 
+    public static Result error(Integer status, String message) {
+        Result result = new Result();
+        result.setStatus(status);
+        result.setMsg(message);
+        return result;
+    }
+
 }

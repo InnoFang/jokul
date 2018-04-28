@@ -73,6 +73,24 @@ public class MovieRepositoryTest {
         bigHero6Type.add(typeRepository.findByName("冒险"));
         bigHero6.setType(bigHero6Type);
         movies.add(bigHero6);
+
+        Movie thePursuitOfHappyness = new Movie();
+        thePursuitOfHappyness.setTitle("当幸福来敲门");
+        thePursuitOfHappyness.setScore(8.9);
+        thePursuitOfHappyness.setAlias("The Pursuit of Happyness");
+        thePursuitOfHappyness.setReleaseDate("2008-01-17(中国大陆),2006-12-15(美国)");
+        thePursuitOfHappyness.setLength(117);
+        thePursuitOfHappyness.setDirector("加布里埃莱·穆奇诺");
+        thePursuitOfHappyness.setScreenwriter("史帝文·康拉德");
+        thePursuitOfHappyness.setCast("威尔·史密斯  贾登·史密斯  坦迪·牛顿  布莱恩·豪威  詹姆斯·凯伦  丹·卡斯泰兰尼塔  柯特·富勒  塔卡尤·费舍尔  凯文·韦斯特  乔治·张  戴维·迈克尔·西尔弗曼 多米尼克·博夫  杰弗·卡伦  乔伊芙·拉文  斯科特·克拉斯");
+        thePursuitOfHappyness.setOverview("克里斯•加纳（威尔·史密斯 Will Smith 饰）用尽全部积蓄买下了高科技治疗仪，到处向医院推销，可是价格高昂，接受的人不多。就算他多努力都无法提供一个良好的生活环境给妻儿，妻子（桑迪·牛顿 Thandie Newton 饰）最终选择离开家。从此他带着儿子克里斯托夫（贾登·史密斯 Jaden Smith 饰）相依为命。克里斯好不容易争取回来一个股票投资公司实习的机会，就算没有报酬，成功机会只有百分之五，他仍努力奋斗，儿子是他的力量。他看尽白眼，与儿子躲在地铁站里的公共厕所里，住在教堂的收容所里…… 他坚信，幸福明天就会来临。");
+        thePursuitOfHappyness.setPost("https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p1312700628.jpg");
+        Set<Type> thePursuitOfHappynessType = new HashSet<>();
+        thePursuitOfHappynessType.add(typeRepository.findByName("剧情"));
+        thePursuitOfHappynessType.add(typeRepository.findByName("家庭"));
+        thePursuitOfHappynessType.add(typeRepository.findByName("传记"));
+        thePursuitOfHappyness.setType(thePursuitOfHappynessType);
+        movies.add(thePursuitOfHappyness);
     }
 
     @Test

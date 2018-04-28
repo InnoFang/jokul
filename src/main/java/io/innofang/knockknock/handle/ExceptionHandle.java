@@ -2,6 +2,11 @@ package io.innofang.knockknock.handle;
 
 import io.innofang.knockknock.domain.Result;
 import io.innofang.knockknock.enums.ResultEnum;
+import io.innofang.knockknock.exception.BaseException;
+import io.innofang.knockknock.exception.MovieNotFoundException;
+import io.innofang.knockknock.exception.StorageException;
+import io.innofang.knockknock.exception.StorageFileNotFoundException;
+import io.innofang.knockknock.services.StorageService;
 import io.innofang.knockknock.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +25,10 @@ public class ExceptionHandle {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result handle(Exception e) {
+        if (e instanceof BaseException) {
+            BaseException exception = (BaseException) e;
+            return ResultUtil.error(exception.getStatus(), exception.getMessage());
+        }
         logger.error(e.getMessage());
         return ResultUtil.error(ResultEnum.UNKNOWN_ERROR);
     }

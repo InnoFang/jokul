@@ -1,5 +1,6 @@
 package io.innofang.knockknock.services;
 
+import io.innofang.knockknock.enums.ResultEnum;
 import io.innofang.knockknock.exception.StorageException;
 import io.innofang.knockknock.exception.StorageFileNotFoundException;
 import io.innofang.knockknock.properties.StorageProperties;
@@ -20,6 +21,7 @@ import java.util.stream.Stream;
 /**
  * Created by Inno Fang on 2018/4/28.
  */
+@Service
 public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;
@@ -34,20 +36,19 @@ public class FileSystemStorageService implements StorageService {
         try {
             Files.createDirectory(rootLocation);
         } catch (IOException e) {
-            throw new StorageException("Could not initialize storage", e);
+            throw new StorageException(-1, "Could not initialize storage", e);
         }
     }
 
     @Override
     public void store(MultipartFile file) {
-
         try {
             if (file.isEmpty()) {
-                throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
+                throw new StorageException(-1, "Failed to store empty file " + file.getOriginalFilename());
             }
             Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
         } catch (IOException e) {
-            throw new StorageException("Failed to read stored files", e);
+            throw new StorageException(-1, "Failed to read stored files", e);
         }
     }
 
@@ -58,7 +59,7 @@ public class FileSystemStorageService implements StorageService {
                     .filter(path -> !path.equals(this.rootLocation))
                     .map(this.rootLocation::relativize);
         } catch (IOException e) {
-            throw new StorageException("Failed to read stored files", e);
+            throw new StorageException(-1, "Failed to read stored files", e);
         }
     }
 
@@ -75,10 +76,10 @@ public class FileSystemStorageService implements StorageService {
             if (resource.exists() || resource.isReadable()) {
                 return resource;
             } else {
-                throw new StorageFileNotFoundException("Could not read file: " + filename);
+                throw new StorageFileNotFoundException(-1, "Could not read file: " + filename);
             }
         } catch (MalformedURLException e) {
-            throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+            throw new StorageFileNotFoundException(-1, "Could not read file: " + filename, e);
         }
     }
 

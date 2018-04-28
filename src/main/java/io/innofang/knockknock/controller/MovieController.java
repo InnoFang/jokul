@@ -7,6 +7,7 @@ import io.innofang.knockknock.repositories.MovieRepository;
 import io.innofang.knockknock.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,6 +25,15 @@ public class MovieController {
     public Result<List<Movie>> getMovieList() {
         List<Movie> movies = movieRepository.findAll();
         return ResultUtil.success(ResultEnum.GET_MOVIE_LIST, movies);
+    }
+
+    @GetMapping(value = "/{title}")
+    public Result<Movie> getMovieDetail(@PathVariable("title") String title) {
+        Movie movie = movieRepository.findByTitle(title);
+        if (null == movie) {
+
+        }
+        return ResultUtil.success(ResultEnum.GET_MOVIE_DETAIL, movie);
     }
 
 }
