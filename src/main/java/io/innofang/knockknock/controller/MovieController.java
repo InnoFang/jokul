@@ -3,6 +3,7 @@ package io.innofang.knockknock.controller;
 import io.innofang.knockknock.domain.Movie;
 import io.innofang.knockknock.domain.Result;
 import io.innofang.knockknock.enums.ResultEnum;
+import io.innofang.knockknock.exception.MovieNotFoundException;
 import io.innofang.knockknock.repositories.MovieRepository;
 import io.innofang.knockknock.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,17 @@ public class MovieController {
     @Autowired
     private MovieRepository movieRepository;
 
-    @GetMapping(value = "/movie_list")
-    public Result<List<Movie>> getMovieList() {
+    @GetMapping(value = "/movieinfolist")
+    public Result<List<Movie>> getMovieInfoList() {
         List<Movie> movies = movieRepository.findAll();
-        return ResultUtil.success(ResultEnum.GET_MOVIE_LIST, movies);
+        return ResultUtil.success(ResultEnum.GET_MOVIE_INFO_LIST, movies);
     }
 
     @GetMapping(value = "/{title}")
     public Result<Movie> getMovieDetail(@PathVariable("title") String title) {
         Movie movie = movieRepository.findByTitle(title);
         if (null == movie) {
-
+            throw new MovieNotFoundException(ResultEnum.MOVIE_NOT_FOUND);
         }
         return ResultUtil.success(ResultEnum.GET_MOVIE_DETAIL, movie);
     }

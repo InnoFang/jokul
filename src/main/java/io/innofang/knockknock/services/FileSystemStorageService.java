@@ -11,7 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -41,12 +44,13 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public void store(MultipartFile file) {
+    public void store(File file) {
         try {
-            if (file.isEmpty()) {
-                throw new StorageException(-1, "Failed to store empty file " + file.getOriginalFilename());
+            if (!file.exists()) {
+                throw new StorageException(-1, "Failed to store empty file " + file.getName());
             }
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+            InputStream inputStream = new FileInputStream(file);
+            Files.copy(inputStream, this.rootLocation.resolve(file.getName()));
         } catch (IOException e) {
             throw new StorageException(-1, "Failed to read stored files", e);
         }

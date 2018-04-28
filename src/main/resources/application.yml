@@ -17,7 +17,8 @@ spring:
         enabled: true
 server:
   servlet:
-    context-path: /movie
+    context-path: /knockknock
 
 storage:
   location: upload-dir
+  source: E:/Movie
