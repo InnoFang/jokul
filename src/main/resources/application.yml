@@ -21,4 +21,4 @@ server:
 
 storage:
   location: upload-dir
-  source: E:/Movie
+  source: E:/Movie/%s.mp4

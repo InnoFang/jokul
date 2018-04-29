@@ -58,7 +58,7 @@ public class MovieUploadController {
     public Result<String> uploadMovieFile(@PathVariable("movie") String movie) {
         if (storageService.loadAll()
                 .noneMatch(path -> path.getFileName().toString().contains(movie))) {
-            File file = new File(storageProperties.getSource(), movie + ".mp4");
+            File file = storageProperties.getSourceFile(movie);
             storageService.store(file);
         }
         return ResultUtil.success(ResultEnum.UPLOAD_MOVIE_FILE,

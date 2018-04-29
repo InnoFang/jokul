@@ -5,6 +5,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+
 /**
  * Created by Inno Fang on 2018/4/28.
  */
@@ -33,5 +35,9 @@ public class StorageProperties {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public File getSourceFile(String fileName) {
+        return new File(String.format(source, fileName));
     }
 }
