@@ -8,11 +8,8 @@ sudo: false
 jdk:
   - oraclejdk8 
 
-before_script:
+before_install:
+  - chmod +x mvnw
   - mvn pmd:check
   - mvn pmd:cpd-check
   - cat target/pmd.xml
-
-
-after_script:
-  - mvn checkstyle:check --batch-mode --fail-never
