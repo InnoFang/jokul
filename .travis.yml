@@ -9,10 +9,10 @@ jdk:
   - oraclejdk8 
 
 before_script:
-  - mvn pmd:check --batch-mode --fail-never
-  - mvn pmd:cpd-check --fail-never
+  - mvn pmd:check
+  - mvn pmd:cpd-check
   - cat target/pmd.xml
-  - cat target/cpd.xml
+
 
 after_script:
   - mvn checkstyle:check --batch-mode --fail-never
