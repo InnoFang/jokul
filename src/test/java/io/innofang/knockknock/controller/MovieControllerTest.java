@@ -29,11 +29,11 @@ public class MovieControllerTest {
         System.out.println(handler.getAsyncResult());
     }
 
-    @Test
-    @Ignore
-    public void getMovieList() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/movie/movie_list"))
-                .andDo(MovieControllerTest::handle)
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
+//    @Test
+////    @Ignore
+//    public void getMovieList() throws Exception {
+//        mvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/knockknock/movieinfolist"))
+////                .andDo(MovieControllerTest::handle)
+//                .andExpect(MockMvcResultMatchers.status().isOk());
+//    }
 }
