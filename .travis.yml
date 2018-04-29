@@ -1,0 +1,19 @@
+language: java
+
+notifications:
+  email: false
+
+sudo: false
+
+jdk:
+  - oraclejdk8 
+  - openjdk8
+
+before_script:
+  - mvn pmd:check --batch-mode --fail-never
+  - mvn pmd:cpd-check --fail-never
+  - cat target/pmd.xml
+  - cat target/cpd.xml
+
+after_script:
+  - mvn checkstyle:check --batch-mode --fail-never

@@ -1,5 +1,6 @@
 package io.innofang.knockknock.controller;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class MovieControllerTest {
     }
 
     @Test
+    @Ignore
     public void getMovieList() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/movie/movie_list"))
                 .andDo(MovieControllerTest::handle)
