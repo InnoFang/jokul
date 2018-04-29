@@ -10,6 +10,5 @@ jdk:
 
 before_install:
   - chmod +x mvnw
-  - mvn pmd:check
-  - mvn pmd:cpd-check
-  - cat target/pmd.xml
+
+script: mvn package
