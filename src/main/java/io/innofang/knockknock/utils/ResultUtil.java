@@ -12,7 +12,7 @@ public class ResultUtil {
         Result<T> result = new Result<>();
         result.setStatus(resultEnum.getStatus());
         result.setMsg(resultEnum.getMsg());
-        result.setResultData(resultData);
+        result.setData(resultData);
         return result;
     }
 
