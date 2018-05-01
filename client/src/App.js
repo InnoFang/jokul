@@ -7,7 +7,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            movies: [],
+            data: [],
             isLoading: false
         }
     }
@@ -18,26 +18,27 @@ class App extends Component {
 
         fetch('http://localhost:8080/knockknock/movieinfolist', {
             method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            })
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            mode: 'cors',
         })
             .then(response => response.json())
-            .then(data => this.setState({movies: data, isLoading: false}));
+            .then(info => this.setState({data: info.data, isLoading: false}))
+            .catch(error => console.error('Error:', error));
     }
 
     render() {
 
-        const {movies, isLoading} = this.state;
+        let {data, isLoading} = this.state;
+        if (data[0] != null) {
+            console.log('hello')
+            console.log(data[0].title);
+            console.log(data[0].post);
+            console.log(data[0].id);
+        }
 
-        if (isLoading) {
-            return <p>is loading...</p>
-        }
-        for (let i in movies.data) {
-            if (movies.data.hasOwnProperty(i)) {
-                console.log(movies.data[i])
-            }
-        }
         return (
             <div className="App">
                 <header className="App-header">
