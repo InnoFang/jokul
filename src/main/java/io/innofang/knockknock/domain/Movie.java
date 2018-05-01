@@ -160,22 +160,4 @@ public class Movie {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", score=" + score +
-                ", alias='" + alias + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", length=" + length +
-                ", director='" + director + '\'' +
-                ", screenwriter='" + screenwriter + '\'' +
-                ", cast='" + cast + '\'' +
-                ", overview='" + overview + '\'' +
-                ", post='" + post + '\'' +
-                ", src='" + src + '\'' +
-                ", type=" + type +
-                '}';
-    }
 }

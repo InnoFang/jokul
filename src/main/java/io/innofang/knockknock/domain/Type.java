@@ -60,12 +60,4 @@ public class Type {
         this.movies = movies;
     }
 
-    @Override
-    public String toString() {
-        return "Type{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", movies=" + movies +
-                '}';
-    }
 }

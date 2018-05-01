@@ -15,11 +15,13 @@ class App extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        var myFetchOptions = {
-            method: 'GET'
-        };
 
-        fetch('http://localhost:8080/knockknock/movieinfolist', myFetchOptions)
+        fetch('http://localhost:8080/knockknock/movieinfolist', {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
             .then(response => response.json())
             .then(data => this.setState({movies: data, isLoading: false}));
     }
@@ -30,6 +32,11 @@ class App extends Component {
 
         if (isLoading) {
             return <p>is loading...</p>
+        }
+        for (let i in movies.data) {
+            if (movies.data.hasOwnProperty(i)) {
+                console.log(movies.data[i])
+            }
         }
         return (
             <div className="App">
