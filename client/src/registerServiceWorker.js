@@ -61,16 +61,16 @@ function registerValidSW(swUrl) {
         installingWorker.onstatechange = () => {
           if (installingWorker.state === 'installed') {
             if (navigator.serviceWorker.controller) {
-              // At this point, the old content will have been purged and
-              // the fresh content will have been added to the cache.
-              // It's the perfect time to display a "New content is
+              // At this point, the old Container.js will have been purged and
+              // the fresh Container.js will have been added to the cache.
+              // It's the perfect time to display a "New Container.js is
               // available; please refresh." message in your web app.
-              console.log('New content is available; please refresh.');
+              console.log('New Container.js is available; please refresh.');
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
-              // "Content is cached for offline use." message.
-              console.log('Content is cached for offline use.');
+              // "Container.js is cached for offline use." message.
+              console.log('Container.js is cached for offline use.');
             }
           }
         };
@@ -88,7 +88,7 @@ function checkValidServiceWorker(swUrl) {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
         response.status === 404 ||
-        response.headers.get('content-type').indexOf('javascript') === -1
+        response.headers.get('Container.js-type').indexOf('javascript') === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then(registration => {
