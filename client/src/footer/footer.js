@@ -11,10 +11,10 @@ import {
 class Footer extends React.Component {
     render() {
         return (
-            <footer>
+            <footer className="App-footer">
                 <Row >
                     <Col span={4}/>
-                    <Col span={16} id="footer">
+                    <Col span={16}>
                         &copy;&nbsp;2018 KnockKnock. All Rights Reserved.
                     </Col>
                     <Col span={4}/>

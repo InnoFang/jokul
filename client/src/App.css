@@ -12,10 +12,20 @@
   height: 150px;
   padding: 20px;
   color: white;
+  text-align: center;
 }
+
+.App-footer {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
 
 .App-title {
   font-size: 1.5em;
+  text-align: center;
 }
 
 .App-intro {

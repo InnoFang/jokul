@@ -19,7 +19,7 @@ const TabPane = Tabs.TabPane;
 class Header extends React.Component {
     render() {
         return (
-            <header>
+            <header className="App-header">
                 <Row>
                     <Col span={2}/>
                     <Col span={20}>
