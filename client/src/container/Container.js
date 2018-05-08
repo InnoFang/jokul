@@ -3,8 +3,12 @@
  */
 
 import React from 'react';
-import logo from '../logo.svg';
-import '../App.css';
+import {
+    Row,
+    Col
+} from 'antd';
+import MovieCard from '../movieCard/MovieCard'
+import './Container.css'
 
 class Container extends React.Component {
     constructor() {
@@ -35,35 +39,37 @@ class Container extends React.Component {
     render() {
 
         let {data, isLoading} = this.state;
-        if (data[0] != null) {
-            console.log('hello')
-            console.log(data[0].title);
-            console.log(data[0].post);
-            console.log(data[0].id);
-        }
 
+        if (data[0] == null) {
+            return <div></div>;
+        }
+        console.log('hello');
+        console.log(data[0].title);
+        console.log(data[0].post);
+        console.log(data[0].id);
         return (
+
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-                <hr />
-                <ul>
-                {
-                    data.map(d => <li>
-                        <div>
-                            <h3>{d.title}</h3>
-                            <p>{d.overview}</p>
-                            <br/>
-                            <img src={d.post}/>
-                        </div>
-                    </li>)
-                }
-                </ul>
+                <Row>
+                    <Col span={3}/>
+                    <Col span={4}>
+                        <MovieCard {...data[0]}/>
+                    </Col>
+                    <Col span={1}/>
+                    <Col span={4}>
+                        <MovieCard {...data[1]}/>
+                    </Col>
+                    <Col span={1}/>
+                    <Col span={4}>
+                        <MovieCard {...data[2]}/>
+                    </Col>
+                    <Col span={1}/>
+                    <Col span={4}>
+                        <MovieCard {...data[1]}/>
+                    </Col>
+                    <Col span={3}/>
+                </Row>
+
             </div>
         );
     }
