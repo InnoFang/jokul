@@ -7,6 +7,7 @@ public enum ResultEnum {
     SIGN_UP(1, "successfully to add user"),
     SIGN_IN(1, "successfully to login"),
     GET_MOVIE_INFO_LIST(1, "successfully to get movie info list"),
+    GET_MOVIE_TYPE_LIST(1, "successfully to get movie type list"),
     GET_MOVIE_SRC_LIST(1, "successfully to get movie source list"),
     GET_MOVIE_DETAIL(1, "successfully to get movie detail"),
     UPLOAD_MOVIE_FILE(1, "successfully to load movie file"),

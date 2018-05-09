@@ -56,6 +56,31 @@ public class Movie {
             inverseJoinColumns = @JoinColumn(name = "type_id"))
     private Set<Type> type;
 
+
+    public Movie() {
+    }
+
+    public Movie(String title, Double score, String post) {
+        this.title = title;
+        this.score = score;
+        this.post = post;
+    }
+
+    public Movie(String title, Double score, String alias, String releaseDate, Integer length, String director, String screenwriter, String cast, String overview, String post, String src, Set<Type> type) {
+        this.title = title;
+        this.score = score;
+        this.alias = alias;
+        this.releaseDate = releaseDate;
+        this.length = length;
+        this.director = director;
+        this.screenwriter = screenwriter;
+        this.cast = cast;
+        this.overview = overview;
+        this.post = post;
+        this.src = src;
+        this.type = type;
+    }
+
     public Long getId() {
         return id;
     }

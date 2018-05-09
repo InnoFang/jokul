@@ -3,14 +3,40 @@ package io.innofang.knockknock.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.innofang.knockknock.utils.TypeSerialize;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Created by Inno Fang on 2018/4/27.
  */
 @Entity
+@SqlResultSetMapping(
+        name = "Movie",
+        classes = {
+                @ConstructorResult(
+                        targetClass = Movie.class,
+                        columns = {
+                                @ColumnResult(name = "title", type = String.class),
+                                @ColumnResult(name = "score", type = Double.class),
+                                @ColumnResult(name = "post", type = String.class),
+                        }
+                )
+        }
+)
+@NamedNativeQuery(
+        name = "Type.findMovies",
+        query = "select movie.title, movie.score, movie.post " +
+                "from movie, type, movie_type " +
+                "where movie_type.type_id=type.id " +
+                "and movie_type.movie_id=movie.id " +
+                "and type.name=:typeName",
+        resultSetMapping = "Movie"
+)
 @JsonSerialize(using = TypeSerialize.class)
 public class Type {
 
