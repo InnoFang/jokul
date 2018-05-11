@@ -23,7 +23,7 @@ class Container extends React.Component {
         this.setState({isLoading: true});
 
 
-        fetch('http://localhost:8080/knockknock/movieinfolist', {
+        fetch('http://localhost:8080/knockknock/movieinfolist/0', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

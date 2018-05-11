@@ -7,8 +7,12 @@ import {
     Card,
     Rate
 } from 'antd';
+import {
+    Redirect
+} from 'react-router-dom'
+
 import './MovieCard.css';
-const { Meta } = Card;
+const {Meta} = Card;
 
 class MovieCard extends React.Component {
 
@@ -17,27 +21,27 @@ class MovieCard extends React.Component {
     }
 
 
-
     render() {
         console.log(this.props.score / 2);
         const half = parseInt(this.props.score) % 2 == 1 ? 0.5 : 0;
         const star = parseInt(this.props.score / 2) + half;
         const desc =
             <div id="description">
-               <Rate disabled allowHalf  value={star}/>{this.props.score}
+                <Rate disabled allowHalf value={star}/>{this.props.score}
             </div>;
 
         return (
-            <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={<img alt="post" src={this.props.post} />}
-            >
-                <Meta
-                    title={this.props.title}
-                    description={desc}
-                />
-            </Card>
+            <Redirect to={`/movieInfo/${this.props.title}`}>
+                <Card
+                    hoverable
+                    style={{width: 240}}
+                    cover={<img alt="post" src={this.props.post}/>}>
+                    <Meta
+                        title={this.props.title}
+                        description={desc}
+                    />
+                </Card>
+            </Redirect>
         );
     }
 }

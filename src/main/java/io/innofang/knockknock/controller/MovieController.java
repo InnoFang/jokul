@@ -31,14 +31,7 @@ public class MovieController {
         Page<Movie> movies = movieRepository.findAll(pageable);
         return ResultUtil.success(ResultEnum.GET_MOVIE_INFO_LIST, movies.getContent());
     }
-
-//    @GetMapping(value = "/{type}/{page}")
-//    public Result<List<Movie>> getMovieInfoList(@PathVariable("type") String type,
-//                                                @PathVariable("page") int page) {
-//        Pageable pageable = PageRequest.of(page, 12);
-//        List<Movie> movies = movieRepository.findByType(type, pageable);
-//        return ResultUtil.success(ResultEnum.GET_MOVIE_TYPE_LIST, movies);
-//    }
+ 
 
     @GetMapping(value = "/{title}")
     public Result<Movie> getMovieDetail(@PathVariable("title") String title) {
