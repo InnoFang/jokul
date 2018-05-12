@@ -1,1 +1,20 @@
 @import '~antd/dist/antd.css';
+
+hr {
+    height: 2px;
+    background: #460e2e;
+}
+#score {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#play {
+    text-align: center;
+}
+
+#overview {
+    background: rgba(195, 137, 255, 0.26);
+    padding: 15px;
+    border-radius: 15px;
+}
