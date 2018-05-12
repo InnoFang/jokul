@@ -1,7 +1,8 @@
 import React from 'react';
 import {
     Row,
-    Col
+    Col,
+    BackTop
 } from 'antd'
 import {
     BrowserRouter as Router,
@@ -36,6 +37,7 @@ class App extends React.Component {
                         </Switch>
                     </div>
                 </Router>
+                <BackTop/>
                 <Footer/>
             </div>
         )
