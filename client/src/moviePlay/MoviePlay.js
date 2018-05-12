@@ -6,6 +6,7 @@ import React from 'react'
 import {
     Col,
     Row,
+    message
 } from 'antd';
 import {
     Player,
@@ -28,7 +29,7 @@ class MoviePlay extends React.Component {
 
     componentDidMount() {
         this.setState({isLoading: true});
-
+        message.warning('视频资源正在加载');
         fetch(Api.playMovie(this.props.match.params.movie), {
             method: 'POST',
             headers: {
@@ -39,16 +40,10 @@ class MoviePlay extends React.Component {
         })
             .then(response => response.json())
             .then(req => {
-                let hasError = false;
-                let text = '';
                 if (req.status != 1) {
-                    hasError = true;
-                    text = req.msg;
-
-                    // 给点提示 //fixme
-
+                    message.error('视频资源获取失败', 10);
                 } else {
-                    console.log();
+                    message.success('视频资源加载成功');
                     this.setState({src: req.data, isLoading: false})
                 }
             })
