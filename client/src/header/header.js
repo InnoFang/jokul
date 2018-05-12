@@ -14,6 +14,10 @@ import {
     Button,
     Form
 } from 'antd';
+import {
+    Redirect,
+    Link
+} from 'react-router-dom'
 
 import './header.css'
 
@@ -25,7 +29,7 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: '',
+            current: 'unknown',
             modalVisible: false,
             action: 'login',
             hasLogined: false,
@@ -58,15 +62,16 @@ class Header extends React.Component {
                     </Col>
                     <Col span={4}>
                         <Menu
-                            onClick={this.handleClick}
+                            onClick={this.handleClick.bind(this)}
                             selectedKeys={[this.state.current]}
                             mode="horizontal"
                             style={{lineHeight: '64px'}}>
                             <Menu.Item key="home">
-                                <a href="/"> <Icon type="home"/>主页</a>
+                                <Link to={'/'}/><Icon type="home"/>主页
                             </Menu.Item>
                             <Menu.Item key="app">
                                 <Icon type="profile"/>分类检索
+                                <Link to={'/category'}/>
                             </Menu.Item>
                         </Menu>
                     </Col>
@@ -84,6 +89,15 @@ class Header extends React.Component {
 
                     </Col>
                     <Col span={3}/>
+                </Row>
+                <br/>
+                <br/>
+                <Row >
+                    <Col span={24}>
+                        <div id="title">
+                            <img src={require('../images/JOKUL.png')} alt="logo"/>
+                        </div>
+                    </Col>
                 </Row>
                 <br/>
                 <br/>

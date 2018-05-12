@@ -8,9 +8,7 @@ import {
     Col
 } from 'antd';
 import MovieCard from '../movieCard/MovieCard'
-import './MovieList.css'
 import Api from '../Api'
-
 function ACol(props) {
     return (
         <div>
@@ -39,7 +37,7 @@ function Rows(props) {
     return <div>{rows.map(r => r)}</div>;
 }
 
-class MovieList extends React.Component {
+class MovieCategoryList extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -51,7 +49,7 @@ class MovieList extends React.Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch(Api.movieList(0), {
+        fetch(Api.categoryList(this.props.match.params.type, 0), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -73,6 +71,7 @@ class MovieList extends React.Component {
         }
 
         return (
+
             <div>
                 <Row>
                     <Rows movies={data}/>
@@ -82,7 +81,7 @@ class MovieList extends React.Component {
     }
 }
 
-export default MovieList;
+export default MovieCategoryList;
 
 /*
  <Col span={4}>

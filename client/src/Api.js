@@ -6,7 +6,9 @@ const root = 'http://localhost:8080/jokul';
 
 const Api = {
     'movieList': (page) => `${root}/movie-list/${page}`,
-    'movieDetail': (title) => `${root}/${title}`
+    'movieDetail': (title) => `${root}/${title}`,
+    'types': () => `${root}/types`,
+    'categoryList': (type, page) => `${root}/${type}/${page}`
 };
 
 export default Api;

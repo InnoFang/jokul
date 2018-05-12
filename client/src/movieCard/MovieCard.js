@@ -32,7 +32,7 @@ class MovieCard extends React.Component {
             </div>;
 
         return (
-            <Link replace to={`/movieInfo/${this.props.title}`}>
+            <Link to={`/movieInfo/${this.props.title}`}>
                 <Card
                     hoverable
                     style={{width: 240}}

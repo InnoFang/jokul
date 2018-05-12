@@ -1,5 +1,9 @@
 import React from 'react';
 import {
+    Row,
+    Col
+} from 'antd'
+import {
     BrowserRouter as Router,
     Route,
     Switch,
@@ -11,19 +15,23 @@ import Header from './header/header';
 import MovieList from './movieList/MovieList';
 import Footer from './footer/footer';
 import MovieInfo from './movieInfo/MovieInfo'
+import MovieCategory from './movieCategory/MovieCategory'
+
 
 class App extends React.Component {
 
     render() {
         return (
             <div>
-                <Header/>
+
                 <Router>
                     <div>
+                        <Header/>
                         <Switch>
-                            <Route exact component={MovieList} path="/" />
-                            <Route exact component={MovieInfo}  path="/movieInfo/:title"/>
-                            <Redirect to="/" />
+                            <Route exact component={MovieList} path="/"/>
+                            <Route exact component={MovieInfo} path="/movieInfo/:title"/>
+                            <Route exact component={MovieCategory} path="/category"/>
+                            <Redirect to="/"/>
                         </Switch>
                     </div>
                 </Router>
