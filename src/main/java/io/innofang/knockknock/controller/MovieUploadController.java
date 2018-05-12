@@ -35,7 +35,7 @@ public class MovieUploadController {
         this.storageService = storageService;
     }
 
-    @GetMapping("/moviesrclist")
+    @GetMapping("/movie-src-list")
     public Result<List<String>> listUploadMovies() {
         return ResultUtil.success(ResultEnum.GET_MOVIE_SRC_LIST,
                 storageService.loadAll().map(path ->

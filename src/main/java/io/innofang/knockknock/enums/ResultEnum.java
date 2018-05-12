@@ -10,6 +10,7 @@ public enum ResultEnum {
     GET_MOVIE_TYPE_LIST(1, "successfully to get movie type list"),
     GET_MOVIE_SRC_LIST(1, "successfully to get movie source list"),
     GET_MOVIE_DETAIL(1, "successfully to get movie detail"),
+    GET_TYPES(1, "successfully to get types"),
     UPLOAD_MOVIE_FILE(1, "successfully to load movie file"),
     USER_DUPLICATE(-1, "user duplicated"),
     USER_MISSED(-1, "user missed"),

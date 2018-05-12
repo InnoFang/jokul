@@ -34,4 +34,8 @@ public class TypeController {
         return ResultUtil.success(ResultEnum.GET_MOVIE_TYPE_LIST, movies);
     }
 
+    @GetMapping(value = "/types")
+    public Result<List<Type>> getAllTypes() {
+        return ResultUtil.success(ResultEnum.GET_TYPES, typeRepository.findAll());
+    }
 }
