@@ -55,9 +55,10 @@ class Header extends React.Component {
             <header className="App-header">
                 <Row>
                     <Col span={3}/>
-                    <Col span={2}>
+                    <Col span={3}>
                         <a href="/" id="logo">
                             <img src={require('../images/logo.png')} alt="logo"/>
+                            <span>JOKUL</span>
                         </a>
                     </Col>
                     <Col span={4}>
@@ -89,15 +90,6 @@ class Header extends React.Component {
 
                     </Col>
                     <Col span={3}/>
-                </Row>
-                <br/>
-                <br/>
-                <Row >
-                    <Col span={24}>
-                        <div id="title">
-                            <img src={require('../images/JOKUL.png')} alt="logo"/>
-                        </div>
-                    </Col>
                 </Row>
                 <br/>
                 <br/>

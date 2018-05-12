@@ -56,9 +56,6 @@ class MoviePlay extends React.Component {
         console.log(source);
         return (
             <div>
-                <br/>
-                <br/>
-                <br/>
                 <Row>
                     <Col span={4}/>
                     <Col span={5}>

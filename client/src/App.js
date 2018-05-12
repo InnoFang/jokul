@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom'
 
 import Header from './header/header';
-import MovieList from './movieList/MovieList';
+import Home from './home/Home'
 import Footer from './footer/footer';
 import MovieInfo from './movieInfo/MovieInfo'
 import MovieCategory from './movieCategory/MovieCategory'
@@ -28,7 +28,7 @@ class App extends React.Component {
                     <div>
                         <Header/>
                         <Switch>
-                            <Route exact component={MovieList} path="/"/>
+                            <Route exact component={Home} path="/"/>
                             <Route exact component={MovieInfo} path="/movieInfo/:title"/>
                             <Route exact component={MovieCategory} path="/category"/>
                             <Route exact component={MoviePlay} path="/play/:movie"/>

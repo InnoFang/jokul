@@ -1,18 +1,25 @@
 @import '~antd/dist/antd.css';
 
-#logo{
+#logo {
     padding-top: 10px;
     align-items: center;
     display: flex;
 }
 
-a:link,a:visited{
-    text-decoration:none;
+a:link, a:visited {
+    text-decoration: none;
 }
 
-#logo img{
-    width: 60px;
+#logo img {
     height: 60px;
+    width: 60px;
+}
+
+#logo span {
+    font-size: 36px;
+    font-weight: bold;
+    padding-left: 10px;
+    font-family: Fantasy;
 }
 
 #title {
