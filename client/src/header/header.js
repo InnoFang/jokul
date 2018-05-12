@@ -25,7 +25,7 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: 'home',
+            current: '',
             modalVisible: false,
             action: 'login',
             hasLogined: false,
@@ -56,23 +56,32 @@ class Header extends React.Component {
                             <img src={require('../images/logo.png')} alt="logo"/>
                         </a>
                     </Col>
-                    <Col span={14}>
+                    <Col span={4}>
                         <Menu
                             onClick={this.handleClick}
                             selectedKeys={[this.state.current]}
                             mode="horizontal"
-                            style={{ lineHeight: '64px' }}
-                        >
+                            style={{lineHeight: '64px'}}>
                             <Menu.Item key="home">
-                                <Icon type="home"/>主页
+                                <a href="/"> <Icon type="home"/>主页</a>
                             </Menu.Item>
                             <Menu.Item key="app">
-                                <Icon type="profile" />分类检索
-                            </Menu.Item>
-                            <Menu.Item key="user">
-                                <Icon type="user" />个人中心
+                                <Icon type="profile"/>分类检索
                             </Menu.Item>
                         </Menu>
+                    </Col>
+                    <Col span={10}/>
+                    <Col span={2}>
+                        <Menu
+                            onClick={this.handleClick}
+                            selectedKeys={[this.state.current]}
+                            mode="horizontal"
+                            style={{lineHeight: '64px'}}>
+                            <Menu.Item key="user">
+                                <Icon type="user"/>登录/注册
+                            </Menu.Item>
+                        </Menu>
+
                     </Col>
                     <Col span={3}/>
                 </Row>
