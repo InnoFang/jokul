@@ -36,7 +36,7 @@ function Rows(props) {
         cols.push(<ACol movie={props.movies[i]}/>);
     }
     rows.push(cols.map(c => c));
-    return <div>{rows.map(r => r)}</div>;
+    return <div>{rows.map(r => <div><br/>{r}</div>)}</div>;
 }
 
 class MovieList extends React.Component {

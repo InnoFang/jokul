@@ -59,8 +59,6 @@ class MovieCategory extends React.Component {
             return <div></div>;
         }
 
-        const list = selectedTag == "全部" ? <MovieList/> : <MovieList type={selectedTag}/>;
-
         return (
             <Router>
                 <div>
@@ -94,7 +92,6 @@ class MovieCategory extends React.Component {
                                             onClick={this.handleClick.bind(this, tag)}> {tag}
                                         </Tag>
                                     </Link>
-
                                 ))}
                             </div>
 
@@ -108,9 +105,7 @@ class MovieCategory extends React.Component {
                         <div>
                             <Route exact path="/category/:type" component={MovieCategoryList}/>
                             <Route exact path="/category" component={MovieList}/>
-                        </div>
-
-                        {/*{list}*/}
+                        </div> 
                     </div>
                     <br/>
                     <br/>
