@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Inno Fang on 2018/4/28.
  */
+
 @RestController
 public class MovieUploadController {
 
