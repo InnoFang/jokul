@@ -37,6 +37,7 @@ public class Movie {
     private String screenwriter;
 
     // 主演
+    @Column(columnDefinition = "text")
     private String cast;
 
     // 剧情
@@ -45,9 +46,6 @@ public class Movie {
 
     // 海报
     private String post;
-
-    // 资源
-    private String src;
 
     // 类型
     @ManyToMany
@@ -66,7 +64,7 @@ public class Movie {
         this.post = post;
     }
 
-    public Movie(String title, Double score, String alias, String releaseDate, Integer length, String director, String screenwriter, String cast, String overview, String post, String src, Set<Type> type) {
+    public Movie(String title, Double score, String alias, String releaseDate, Integer length, String director, String screenwriter, String cast, String overview, String post, Set<Type> type) {
         this.title = title;
         this.score = score;
         this.alias = alias;
@@ -77,7 +75,6 @@ public class Movie {
         this.cast = cast;
         this.overview = overview;
         this.post = post;
-        this.src = src;
         this.type = type;
     }
 
@@ -167,14 +164,6 @@ public class Movie {
 
     public void setPost(String post) {
         this.post = post;
-    }
-
-    public String getSrc() {
-        return src;
-    }
-
-    public void setSrc(String src) {
-        this.src = src;
     }
 
     public Set<Type> getType() {

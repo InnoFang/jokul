@@ -64,14 +64,14 @@ class MovieCategory extends React.Component {
         return (
             <Router>
                 <div>
-                    <Row >
-                        <Col span={24}>
-                            <div id="title">
-                                <img src={require('../images/JOKUL.png')} alt="logo"/>
-                            </div>
-                        </Col>
-                    </Row>
-                    <br/>
+                    {/*<Row >*/}
+                        {/*<Col span={24}>*/}
+                            {/*<div id="title">*/}
+                                {/*<img src={require('../images/JOKUL.png')} alt="logo"/>*/}
+                            {/*</div>*/}
+                        {/*</Col>*/}
+                    {/*</Row>*/}
+                    {/*<br/>*/}
                     <br/>
                     <Row>
                         <Col span={3}/>
