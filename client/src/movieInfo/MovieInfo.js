@@ -11,6 +11,10 @@ import {
     Popover
 } from 'antd';
 
+import {
+    Link
+} from 'react-router-dom'
+
 import Api from '../Api'
 import './MovieInfo.css'
 
@@ -18,8 +22,8 @@ const {Meta} = Card;
 
 class MovieInfo extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             data: {},
             isLoading: false
@@ -51,7 +55,11 @@ class MovieInfo extends React.Component {
         }
 
         const play = (<div id="play">
-            <Button type="primary" icon="play-circle-o" size="large">点击播放</Button>
+            <Link to={`/play/${this.props.match.params.title}`}>
+                <Button type="primary" icon="play-circle-o" size="large">
+                    点击播放
+                </Button>
+            </Link>
         </div>);
 
         return (

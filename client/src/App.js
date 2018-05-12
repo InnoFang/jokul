@@ -16,7 +16,7 @@ import MovieList from './movieList/MovieList';
 import Footer from './footer/footer';
 import MovieInfo from './movieInfo/MovieInfo'
 import MovieCategory from './movieCategory/MovieCategory'
-
+import MoviePlay from './moviePlay/MoviePlay'
 
 class App extends React.Component {
 
@@ -31,6 +31,7 @@ class App extends React.Component {
                             <Route exact component={MovieList} path="/"/>
                             <Route exact component={MovieInfo} path="/movieInfo/:title"/>
                             <Route exact component={MovieCategory} path="/category"/>
+                            <Route exact component={MoviePlay} path="/play/:movie"/>
                             <Redirect to="/"/>
                         </Switch>
                     </div>

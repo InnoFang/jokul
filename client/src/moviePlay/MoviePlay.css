@@ -1,0 +1,6 @@
+@import '~antd/dist/antd.css';
+@import "~video-react/dist/video-react.css";
+
+h1 {
+    font-weight: bold;
+}

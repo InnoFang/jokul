@@ -8,7 +8,8 @@ const Api = {
     'movieList': (page) => `${root}/movie-list/${page}`,
     'movieDetail': (title) => `${root}/${title}`,
     'types': () => `${root}/types`,
-    'categoryList': (type, page) => `${root}/${type}/${page}`
+    'categoryList': (type, page) => `${root}/${type}/${page}`,
+    'playMovie': (movie) => `${root}/play/${movie}`
 };
 
 export default Api;

@@ -8,11 +8,11 @@ import {
     Rate
 } from 'antd';
 import {
-    Redirect,
     Link
 } from 'react-router-dom'
 
 import './MovieCard.css';
+
 const {Meta} = Card;
 
 class MovieCard extends React.Component {
