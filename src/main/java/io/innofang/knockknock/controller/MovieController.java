@@ -25,13 +25,13 @@ public class MovieController {
     @Autowired
     private MovieRepository movieRepository;
 
-    @GetMapping(value = "/movieinfolist/{page}")
+    @GetMapping(value = "/movie-list/{page}")
     public Result<List<Movie>> getMovieInfoList(@PathVariable("page") int page) {
         Pageable pageable = PageRequest.of(page, 12);
         Page<Movie> movies = movieRepository.findAll(pageable);
         return ResultUtil.success(ResultEnum.GET_MOVIE_INFO_LIST, movies.getContent());
     }
- 
+
 
     @GetMapping(value = "/{title}")
     public Result<Movie> getMovieDetail(@PathVariable("title") String title) {

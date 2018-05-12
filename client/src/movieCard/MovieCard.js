@@ -8,7 +8,8 @@ import {
     Rate
 } from 'antd';
 import {
-    Redirect
+    Redirect,
+    Link
 } from 'react-router-dom'
 
 import './MovieCard.css';
@@ -31,7 +32,7 @@ class MovieCard extends React.Component {
             </div>;
 
         return (
-            <Redirect to={`/movieInfo/${this.props.title}`}>
+            <Link replace to={`/movieInfo/${this.props.title}`}>
                 <Card
                     hoverable
                     style={{width: 240}}
@@ -41,7 +42,7 @@ class MovieCard extends React.Component {
                         description={desc}
                     />
                 </Card>
-            </Redirect>
+            </Link>
         );
     }
 }

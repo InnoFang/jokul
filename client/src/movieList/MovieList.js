@@ -8,9 +8,10 @@ import {
     Col
 } from 'antd';
 import MovieCard from '../movieCard/MovieCard'
-import './Container.css'
+import './MovieList.css'
+import Api from '../Api'
 
-class Container extends React.Component {
+class MovieList extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -22,8 +23,7 @@ class Container extends React.Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-
-        fetch('http://localhost:8080/knockknock/movieinfolist/0', {
+        fetch(Api.movieList(0), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -38,18 +38,25 @@ class Container extends React.Component {
 
     render() {
 
-        let {data, isLoading} = this.state;
+        let {data} = this.state;
 
         if (data[0] == null) {
             return <div></div>;
         }
-        console.log('hello');
-        console.log(data[0].title);
-        console.log(data[0].post);
-        console.log(data[0].id);
+
         return (
 
             <div className="App">
+                <Row >
+                    <Col span={24}>
+                        <div id="title">
+                            <img src={require('../images/JOKUL.png')} alt="logo"/>
+                        </div>
+                    </Col>
+                </Row>
+                <br/>
+                <br/>
+                <br/>
                 <Row>
                     <Col span={3}/>
                     <Col span={4}>
@@ -65,7 +72,7 @@ class Container extends React.Component {
                     </Col>
                     <Col span={1}/>
                     <Col span={4}>
-                        <MovieCard {...data[1]}/>
+                        <MovieCard {...data[0]}/>
                     </Col>
                     <Col span={3}/>
                 </Row>
@@ -75,4 +82,4 @@ class Container extends React.Component {
     }
 }
 
-export default Container;
+export default MovieList;

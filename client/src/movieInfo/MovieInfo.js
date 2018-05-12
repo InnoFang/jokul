@@ -8,7 +8,7 @@ import {
     Col,
     Row
 } from 'antd';
-
+import Api from '../Api'
 import './MovieInfo.css'
 
 class MovieInfo extends React.Component {
@@ -25,7 +25,7 @@ class MovieInfo extends React.Component {
         this.setState({isLoading: true});
 
 
-        fetch('http://localhost:8080/knockknock/' + this.props.match.params.title, {
+        fetch(Api.movieDetail(this.props.match.params.title), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -47,14 +47,14 @@ class MovieInfo extends React.Component {
         return (
             <div>
                 <Row>
-                    <Col span={2}/>
-                    <Col span={20}>
+                    <Col span={4}/>
+                    <Col span={16}>
                         <Card
                             hoverable
                             style={{width: 240}}
                             cover={<img alt="post" src={data.post}/>}/>
                     </Col>
-                    <Col span={2}/>
+                    <Col span={4}/>
                 </Row>
             </div>
 

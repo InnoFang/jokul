@@ -50,14 +50,13 @@ class Header extends React.Component {
         return (
             <header className="App-header">
                 <Row>
-                    <Col span={2}/>
-                    <Col span={4}>
+                    <Col span={3}/>
+                    <Col span={2}>
                         <a href="/" id="logo">
                             <img src={require('../images/logo.png')} alt="logo"/>
-                            <span>knock-knock</span>
                         </a>
                     </Col>
-                    <Col span={16}>
+                    <Col span={14}>
                         <Menu
                             onClick={this.handleClick}
                             selectedKeys={[this.state.current]}
@@ -75,18 +74,9 @@ class Header extends React.Component {
                             </Menu.Item>
                         </Menu>
                     </Col>
-                    <Col span={2}/>
+                    <Col span={3}/>
                 </Row>
                 <br/>
-                <Row >
-                    <Col span={24}>
-                        <div id="title">
-                            <h1>Knock Knock</h1>
-                            <p>A movie site built by spring boot and react.js</p>
-                        </div>
-
-                    </Col>
-                </Row>
                 <br/>
             </header>
         )
