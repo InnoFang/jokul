@@ -14,10 +14,12 @@ A movie site built by spring boot and react.js.
 
  + Get movie list ***GET*** `http://localhost:8080/jokul/movie-list/{page}`
  + Get movie detail ***GET*** `http://localhost:8080/jokul/{title}`
- + Get resource links for all the uploaded movies ***GET*** `http://localhost:8080/jokul//movie-src-list`
- + Upload movie file ***POST*** `http://localhost:8080/jokul//play/{movie}`
+ + Upload movie file ***POST*** `http://localhost:8080/jokul/play/{movie}`
  + Get all the movie types ***GET*** `http://localhost:8080/jokul/types`
  + Get a list of movies by type ***GET*** `http://localhost:8080/jokul/{type}/{page}`
+ + Get resource links for all the uploaded movies ***GET*** `http://localhost:8080/jokul/movie-src-list`
+
+ [Detail](./server_data_interface.md)
 
 <br />
 
