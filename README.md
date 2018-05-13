@@ -2,13 +2,54 @@
 
 ![](https://raw.githubusercontent.com/InnoFang/jokul/master/client/src/images/JOKUL.png?token=AO_t-mh3rDje6XQ0m4-CGgJSNu3axBBQks5a_-s2wA%3D%3D)
 
-A movie site built by spring boot and react.js.
+**A movie site built by spring boot and react.js**
 
 ![](https://img.shields.io/badge/spring%20boot-2.0.1.RELEASE-green.svg)   ![](https://img.shields.io/badge/react-16.3.2-blue.svg) ![](https://img.shields.io/badge/react--router--dom-4.2.2-orange.svg) ![](https://img.shields.io/badge/antd-3.4.4-85C1E9.svg)
 
 </div>
 
 <br />
+
+## How to run
+
+**Firstly, clone it**
+
+```
+> $ git clone git@github.com:InnoFang/jokul.git
+> $ cd jokul
+```
+
+**Secondly, deploy server**
+
+Use maven
+
+```
+> $ mvn spring-boot:run
+```
+
+After a while, you can access the server data.
+
+**PS** For the first run, the server data is empty. You have to add data by yourself. Reference the [Server data interface](./server_data_interface.md)
+
+**Last but not least, run the client**
+
+```
+> $ cd client
+```
+
+You can use npm
+
+```
+> $ npm start
+```
+
+or you can use yarn
+
+
+```
+> $ yarn start
+```
+
 
 ## Server data interface
 
@@ -27,34 +68,36 @@ A movie site built by spring boot and react.js.
 
 <div align="center">
 
+> Home Page
+
+
 ![](./screenshot/home.jpg)
 
-Home
+<br />
+<br />
 
-<br />
-<br />
+
+> Category Page
 
 ![](./screenshot/category.jpg)
 
-Category
+<br />
+<br />
 
-<br />
-<br />
+> Movie Detail Page
 
 ![](./screenshot/movie_detail.jpg)
 
-Movie Detail
+<br />
+<br />
 
-<br />
-<br />
+
+> Play a Movie
 
 ![](./screenshot/play_movie.jpg)
 
-Play a Movie
-
 <br />
 <br />
-
 
 </div>
 
