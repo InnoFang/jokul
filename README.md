@@ -8,19 +8,28 @@ A movie site built by spring boot and react.js.
 
 </div>
 
+## Server data interface
+
+ + Get movie list ***GET*** `http://localhost:8080/jokul/movie-list/{page}`
+ + Get movie detail ***GET*** `http://localhost:8080/jokul/{title}`
+ + Get resource links for all the uploaded movies ***GET*** `http://localhost:8080/jokul//movie-src-list`
+ + Upload movie file ***POST*** `http://localhost:8080/jokul//play/{movie}`
+ + Get all the movie types ***GET*** `http://localhost:8080/jokul/types`
+ + Get a list of movies by type ***GET*** `http://localhost:8080/jokul/{type}/{page}`
+
 ## [License](https://github.com/InnoFang/jokul/blob/master/LICENSE)
 
 
-   Copyright 2018 InnoFang
+           Copyright 2018 InnoFang
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+               http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
