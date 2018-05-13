@@ -71,6 +71,7 @@ or yarn
 > $ yarn start
 ```
 
+Wait few seconds, you can see it in your browser and the url is `http://localhost:3000`
 
 ## Server data interface
 
