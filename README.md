@@ -4,7 +4,7 @@
 
 **A movie site built by spring boot and react.js**
 
-![](https://img.shields.io/badge/spring%20boot-2.0.1.RELEASE-green.svg)   ![](https://img.shields.io/badge/react-16.3.2-blue.svg) ![](https://img.shields.io/badge/react--router--dom-4.2.2-orange.svg) ![](https://img.shields.io/badge/antd-3.4.4-85C1E9.svg)
+![](https://img.shields.io/badge/spring%20boot-2.0.1.RELEASE-green.svg)   ![](https://img.shields.io/badge/react-16.3.2-blue.svg) ![](https://img.shields.io/badge/react--router--dom-4.2.2-orange.svg) ![](https://img.shields.io/badge/antd-3.4.4-85C1E9.svg)  ![](https://img.shields.io/badge/Maven-3.5.3-%23CD6155.svg)
 
 </div>
 
@@ -38,7 +38,7 @@ storage:
   source: E:/Movie/%s.mp4
 ```
 
-The value of `source` is a string template that indicate the location and type/suffix of your movies.In this project, The suffix of the movie file must be mp4, and all of the movie in the directory, for me is  the `E:/movie/` in my computer , which must be named same as the title of movie in your database, otherwise it cannot find and load the movie source correctly when you want to the play it.
+The value of `source` is a string template that indicate the location and type/suffix of your movies.In this project, The suffix of the movie file must be mp4, and all of the movie in the directory, for me is  the `E:/Movie/` in my computer , which must be named same as the title of movie in your database, otherwise it cannot find and load the movie source correctly when you want to play it.
 
 **Thirdly, deploy server**
 
