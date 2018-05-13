@@ -8,6 +8,8 @@ A movie site built by spring boot and react.js.
 
 </div>
 
+<br />
+
 ## Server data interface
 
  + Get movie list ***GET*** `http://localhost:8080/jokul/movie-list/{page}`
@@ -16,6 +18,43 @@ A movie site built by spring boot and react.js.
  + Upload movie file ***POST*** `http://localhost:8080/jokul//play/{movie}`
  + Get all the movie types ***GET*** `http://localhost:8080/jokul/types`
  + Get a list of movies by type ***GET*** `http://localhost:8080/jokul/{type}/{page}`
+
+<br />
+
+## User interface
+
+<div align="center">
+
+![](./screenshot/home.jpg)
+
+Home
+
+<br />
+<br />
+
+![](./screenshot/category.jpg)
+
+Category
+
+<br />
+<br />
+
+![](./screenshot/movie_detail.jpg)
+
+Movie Detail
+
+<br />
+<br />
+
+![](./screenshot/play_movie.jpg)
+
+Play a Movie
+
+<br />
+<br />
+
+
+</div>
 
 ## [License](https://github.com/InnoFang/jokul/blob/master/LICENSE)
 
