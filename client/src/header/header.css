@@ -25,3 +25,15 @@ a:link, a:visited {
 #title {
     text-align: center;
 }
+
+.user {
+    margin-top: 20px;
+}
+
+.login-form {
+    max-width: 100%;
+}
+
+.login-form-button {
+    width: 100%;
+}

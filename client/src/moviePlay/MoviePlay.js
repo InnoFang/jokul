@@ -78,6 +78,7 @@ class MoviePlay extends React.Component {
                 <br/>
                 <br/>
                 <br/>
+                <br/>
             </div>
 
         );

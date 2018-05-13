@@ -30,7 +30,6 @@ function Rows(props) {
             cols = [];
             cols.push(<Col span={2}/>);
         }
-        console.log(props.movies[i].title);
         cols.push(<ACol movie={props.movies[i]}/>);
     }
     rows.push(cols.map(c => c));
@@ -82,21 +81,3 @@ class MovieCategoryList extends React.Component {
 }
 
 export default MovieCategoryList;
-
-/*
- <Col span={4}>
- <MovieCard {...data[0]}/>
- </Col>
- <Col span={1}/>
- <Col span={4}>
- <MovieCard {...data[1]}/>
- </Col>
- <Col span={1}/>
- <Col span={4}>
- <MovieCard {...data[2]}/>
- </Col>
- <Col span={1}/>
- <Col span={4}>
- <MovieCard {...data[0]}/>
- </Col>
- */

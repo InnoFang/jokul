@@ -9,7 +9,9 @@ const Api = {
     'movieDetail': (title) => `${root}/${title}`,
     'types': () => `${root}/types`,
     'categoryList': (type, page) => `${root}/${type}/${page}`,
-    'playMovie': (movie) => `${root}/play/${movie}`
+    'playMovie': (movie) => `${root}/play/${movie}`,
+    'userSignUp':  (username, password) => `${root}/user/sign-up?username=${username}&password=${password}`,
+    'userSignIn': (username, password) => `${root}/user/sign-in?username=${username}&password=${password}`,
 };
 
 export default Api;

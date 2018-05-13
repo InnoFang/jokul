@@ -59,8 +59,6 @@ class MovieCategory extends React.Component {
             return <div></div>;
         }
 
-        const list = selectedTag == "全部" ? <MovieList/> : <MovieList type={selectedTag}/>;
-
         return (
             <Router>
                 <div>

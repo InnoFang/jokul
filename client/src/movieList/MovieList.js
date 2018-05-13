@@ -32,7 +32,6 @@ function Rows(props) {
             cols = [];
             cols.push(<Col span={2}/>);
         }
-        console.log(props.movies[i].title);
         cols.push(<ACol movie={props.movies[i]}/>);
     }
     rows.push(cols.map(c => c));
@@ -77,6 +76,10 @@ class MovieList extends React.Component {
                 <Row>
                     <Rows movies={data}/>
                 </Row>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
         );
     }

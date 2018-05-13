@@ -23,7 +23,6 @@ class MovieCard extends React.Component {
 
 
     render() {
-        console.log(this.props.score / 2);
         const half = parseInt(this.props.score) % 2 == 1 ? 0.5 : 0;
         const star = parseInt(this.props.score / 2) + half;
         const desc =

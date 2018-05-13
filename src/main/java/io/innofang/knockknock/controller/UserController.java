@@ -20,8 +20,8 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping(value = "/user/sign-up")
-    public Result singUp(@RequestParam("user_name") String username,
-                         @RequestParam("user_password") String password) {
+    public Result singUp(@RequestParam("username") String username,
+                         @RequestParam("password") String password) {
         if (null != userRepository.findByUsername(username)) {
             return ResultUtil.error(ResultEnum.USER_DUPLICATE);
         }
@@ -33,8 +33,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/user/sign-in")
-    public Result signIn(@RequestParam("user_name") String usernamne,
-                         @RequestParam("user_password") String password) {
+    public Result signIn(@RequestParam("username") String usernamne,
+                         @RequestParam("password") String password) {
         User user = userRepository.findByUsername(usernamne);
         if (null == user) {
             return ResultUtil.error(ResultEnum.USER_MISSED);
