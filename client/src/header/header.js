@@ -83,7 +83,7 @@ class Header extends React.Component {
                             selectedKeys={[this.state.current]}
                             mode="horizontal"
                             style={{lineHeight: '64px'}}>
-                            <Menu.Item key="user">
+                            <Menu.Item key="register">
                                 <Icon type="user"/>登录/注册
                             </Menu.Item>
                         </Menu>

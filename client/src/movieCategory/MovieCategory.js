@@ -59,23 +59,17 @@ class MovieCategory extends React.Component {
             return <div></div>;
         }
 
+        const list = selectedTag == "全部" ? <MovieList/> : <MovieList type={selectedTag}/>;
+
         return (
             <Router>
                 <div>
-                    {/*<Row >*/}
-                        {/*<Col span={24}>*/}
-                            {/*<div id="title">*/}
-                                {/*<img src={require('../images/JOKUL.png')} alt="logo"/>*/}
-                            {/*</div>*/}
-                        {/*</Col>*/}
-                    {/*</Row>*/}
-                    {/*<br/>*/}
                     <br/>
                     <Row>
                         <Col span={3}/>
                         <Col span={18}>
                             <div>
-                                <h4 style={{marginRight: 8, display: 'inline'}}>分类：</h4>
+                                <h3 style={{marginRight: 8, display: 'inline'}}>分类：</h3>
                                 <Link to="/category">
                                     <Tag
                                         key={"全部"}
@@ -103,9 +97,11 @@ class MovieCategory extends React.Component {
                     <div>
 
                         <div>
-                            <Route exact path="/category/:type" component={MovieCategoryList}/>
+                            <Route exact path={`/category/:type`} component={MovieCategoryList}/>
                             <Route exact path="/category" component={MovieList}/>
                         </div>
+
+                        {/*{list}*/}
                     </div>
                     <br/>
                     <br/>
