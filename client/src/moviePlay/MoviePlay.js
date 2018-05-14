@@ -29,7 +29,7 @@ class MoviePlay extends React.Component {
 
     componentDidMount() {
         this.setState({isLoading: true});
-        message.warning('视频资源正在加载');
+        const hide = message.loading('视频资源正在加载，请稍后', 0);
         fetch(Api.playMovie(this.props.match.params.movie), {
             method: 'POST',
             headers: {
@@ -46,6 +46,7 @@ class MoviePlay extends React.Component {
                     message.success('视频资源加载成功');
                     this.setState({src: req.data, isLoading: false})
                 }
+                setTimeout(hide, 1);
             })
             .catch(error => console.error('Error:', error));
     }
