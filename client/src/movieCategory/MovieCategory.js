@@ -93,11 +93,8 @@ class MovieCategory extends React.Component {
                     <br/>
                     <br/>
                     <div>
-
-                        <div>
-                            <Route exact path={`/category/:type`} component={MovieCategoryList}/>
-                            <Route exact path="/category" component={MovieList}/>
-                        </div>
+                        <Route exact path={`/category/:type`} component={MovieCategoryList}/>
+                        <Route exact path="/category" component={MovieList}/>
                     </div>
                     <br/>
                     <br/>

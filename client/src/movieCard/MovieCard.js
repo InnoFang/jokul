@@ -32,7 +32,7 @@ class MovieCard extends React.Component {
             </div>;
 
         return (
-            <Link to={`/movieInfo/${this.props.title}`}>
+            <Link to={`/movieInfo/${this.props.title}`} target='_blank'>
                 <Card
                     hoverable
                     style={{width: 240}}

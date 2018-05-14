@@ -31,8 +31,8 @@ class App extends React.Component {
                             <Route exact component={Home} path="/"/>
                             <Route exact component={MovieInfo} path="/movieInfo/:title"/>
                             <Route exact component={MovieCategory} path="/category"/>
-                            <Route exact component={MoviePlay} path="/play/:movie"/>
-                            <Redirect to="/"/>
+                            <Route exact  component={MoviePlay} path="/play/:movie"/>
+                            <Redirect push to="/"/>
                         </Switch>
                     </div>
                 </Router>
