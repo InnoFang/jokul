@@ -4,6 +4,7 @@ hr {
     height: 2px;
     background: #460e2e;
 }
+
 #score {
     font-size: 2em;
     font-weight: bold;
@@ -12,7 +13,8 @@ hr {
 #play {
     margin-top: 30px;
     text-align: center;
-    animation: anim 2s infinite;
+    -webkit-animation: cute-btn 1.6s infinite;
+    animation: cute-btn 1.6s infinite;
 }
 
 @keyframes anim {
@@ -24,6 +26,76 @@ hr {
     }
     100% {
         transform: translate(0px, 0px);
+    }
+}
+
+@-webkit-keyframes cute-btn {
+    from {
+        -webkit-transform: scale3d(1, 1, 1) translateY(0);
+        transform: scale3d(1, 1, 1) translateY(0);
+    }
+    5% {
+        -webkit-transform: scale3d(1.03, 0.97, 1) translateY(-1px);
+        transform: scale3d(1.03, 0.97, 1) translateY(-1px);
+    }
+    12.5% {
+        -webkit-transform: scale3d(1, 1, 1) translateY(-10px);
+        transform: scale3d(1, 1, 1) translateY(-10px);
+    }
+    20% {
+        -webkit-transform: scale3d(0.98, 1.02, 1) translateY(-1px);
+        transform: scale3d(0.98, 1.02, 1) translateY(-1px);
+    }
+    25% {
+        -webkit-transform: scale3d(1.06, 0.94, 1) translateY(0);
+        transform: scale3d(1.06, 0.94, 1) translateY(0);
+    }
+    32.5% {
+        -webkit-transform: scale3d(0.97, 1.03, 1) translateY(-4px);
+        transform: scale3d(0.97, 1.03, 1) translateY(-4px);
+    }
+    40% {
+        -webkit-transform: scale3d(1, 1, 1) translateY(0);
+        transform: scale3d(1, 1, 1) translateY(0);
+    }
+    100% {
+        -webkit-transform: scale3d(1, 1, 1) translateY(0);
+        transform: scale3d(1, 1, 1) translateY(0);
+    }
+}
+
+@keyframes cute-btn {
+    from {
+        -webkit-transform: scale3d(1, 1, 1) translateY(0);
+        transform: scale3d(1, 1, 1) translateY(0);
+    }
+    5% {
+        -webkit-transform: scale3d(1.03, 0.97, 1) translateY(-1px);
+        transform: scale3d(1.03, 0.97, 1) translateY(-1px);
+    }
+    12.5% {
+        -webkit-transform: scale3d(1, 1, 1) translateY(-10px);
+        transform: scale3d(1, 1, 1) translateY(-10px);
+    }
+    20% {
+        -webkit-transform: scale3d(0.98, 1.02, 1) translateY(-1px);
+        transform: scale3d(0.98, 1.02, 1) translateY(-1px);
+    }
+    25% {
+        -webkit-transform: scale3d(1.06, 0.94, 1) translateY(0);
+        transform: scale3d(1.06, 0.94, 1) translateY(0);
+    }
+    32.5% {
+        -webkit-transform: scale3d(0.97, 1.03, 1) translateY(-4px);
+        transform: scale3d(0.97, 1.03, 1) translateY(-4px);
+    }
+    40% {
+        -webkit-transform: scale3d(1, 1, 1) translateY(0);
+        transform: scale3d(1, 1, 1) translateY(0);
+    }
+    100% {
+        -webkit-transform: scale3d(1, 1, 1) translateY(0);
+        transform: scale3d(1, 1, 1) translateY(0);
     }
 }
 

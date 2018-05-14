@@ -18,7 +18,7 @@ class Home extends React.Component {
                 <Row >
                     <Col span={24}>
                         <div id="title">
-                            <img src={require('../images/JOKUL.png')} alt="logo"/>
+                            <img id="bigImg" src={require('../images/JOKUL.png')} alt="logo"/>
                         </div>
                     </Col>
                 </Row>
