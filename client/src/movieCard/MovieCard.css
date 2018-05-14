@@ -8,15 +8,3 @@
 .movieCard:hover {
     transform: scale(1.05);
 }
-
-@keyframes anim {
-    0% {
-        transform: translate(0px, 0px);
-    }
-    50% {
-        transform: translate(0px, -10px);
-    }
-    100% {
-        transform: translate(0px, 0px);
-    }
-}
