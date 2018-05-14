@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-    Row,
-    Col,
     BackTop
 } from 'antd'
 import {
@@ -9,7 +7,6 @@ import {
     Route,
     Switch,
     Redirect,
-    Link
 } from 'react-router-dom'
 
 import Header from './header/header';

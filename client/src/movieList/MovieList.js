@@ -16,7 +16,7 @@ function ACol(props) {
         <div>
             <Col span={1}/>
             <Col span={4}>
-                <MovieCard {...props.movie}/>
+                <MovieCard key={props.movie.title} {...props.movie}/>
             </Col>
         </div>
     )
@@ -26,9 +26,9 @@ function Rows(props) {
     let cols = [];
     const rows = [];
     for (let i = 0; i < props.movies.length; i++) {
-        if (i % 4 == 0) {
+        if (i % 4 === 0) {
             cols.push(<Col span={3}/>);
-            rows.push(<Row>{cols.map(c => c)}</Row>);
+            rows.push(<Row key={i}>{cols.map(c => c)}</Row>);
             cols = [];
             cols.push(<Col span={2}/>);
         }
@@ -74,7 +74,7 @@ class MovieList extends React.Component {
         return (
             <div>
                 <Row>
-                    <Rows movies={data}/>
+                    <Rows key="movie-list" movies={data}/>
                 </Row>
                 <br/>
                 <br/>

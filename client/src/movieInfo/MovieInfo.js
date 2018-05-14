@@ -4,7 +4,6 @@
 
 import React from 'react'
 import {
-    Card,
     Col,
     Row,
     Button,
@@ -17,8 +16,6 @@ import {
 
 import Api from '../Api'
 import './MovieInfo.css'
-
-const {Meta} = Card;
 
 class MovieInfo extends React.Component {
 
@@ -69,16 +66,11 @@ class MovieInfo extends React.Component {
                 <br/>
                 <Row>
                     <Col span={4}/>
-                    <Col span={4}>
-                        <Card
-                            hoverable
-                            bordered
-                            style={{width: 240}}
-                            cover={<img alt="post" src={data.post}/>}>
-                            <Meta
-                                description={play}
-                            />
-                        </Card>
+                    <Col span={5}>
+                        <div>
+                            <img id="post" alt="post" src={data.post}/>
+                            {play}
+                        </div>
                     </Col>
                     <Col span={1}/>
                     <Col span={5}>

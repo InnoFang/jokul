@@ -9,12 +9,13 @@ import {
 } from 'antd';
 import MovieCard from '../movieCard/MovieCard'
 import Api from '../Api'
+
 function ACol(props) {
     return (
         <div>
             <Col span={1}/>
             <Col span={4}>
-                <MovieCard {...props.movie}/>
+                <MovieCard key={props.movie.title} {...props.movie}/>
             </Col>
         </div>
     )
@@ -24,13 +25,13 @@ function Rows(props) {
     let cols = [];
     const rows = [];
     for (let i = 0; i < props.movies.length; i++) {
-        if (i % 4 == 0) {
-            cols.push(<Col span={3}/>);
-            rows.push(<Row>{cols.map(c => c)}</Row>);
+        if (i % 4 === 0) {
+            cols.push(<Col key={`col${i}`} span={3}/>);
+            rows.push(<Row key={`row${i}`}>{cols.map(c => c)}</Row>);
             cols = [];
-            cols.push(<Col span={2}/>);
+            cols.push(<Col key={`col${i + 1}`} span={2}/>);
         }
-        cols.push(<ACol movie={props.movies[i]}/>);
+        cols.push(<ACol key={`ACol${i}`} movie={props.movies[i]}/>);
     }
     rows.push(cols.map(c => c));
     return <div>{rows.map(r => <div><br/>{r}</div>)}</div>;

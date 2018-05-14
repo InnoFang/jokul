@@ -71,7 +71,7 @@ class MovieCategory extends React.Component {
                                 <Link to="/category">
                                     <Tag
                                         key={"全部"}
-                                        color={selectedTag == "全部" ? "#108ee9" : "geekblue"}
+                                        color={selectedTag === "全部" ? "#108ee9" : "geekblue"}
                                         onClick={this.handleClick.bind(this, "全部")}>
                                         {"全部"}
                                     </Tag>
@@ -80,7 +80,7 @@ class MovieCategory extends React.Component {
                                     <Link to={`/category/${tag}`}>
                                         <Tag
                                             key={tag}
-                                            color={selectedTag == tag ? "#108ee9" : "geekblue"}
+                                            color={selectedTag === tag ? "#108ee9" : "geekblue"}
                                             onClick={this.handleClick.bind(this, tag)}> {tag}
                                         </Tag>
                                     </Link>

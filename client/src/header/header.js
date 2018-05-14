@@ -41,7 +41,7 @@ class Header extends React.Component {
     }
 
     componentWillMount() {
-        if (localStorage.username != '') {
+        if (localStorage.username !== '') {
             this.setState({
                 hasLogined: true,
                 username: localStorage.username
@@ -73,7 +73,7 @@ class Header extends React.Component {
         const username = formData.username;
         const password = formData.password;
 
-        if (username == null || password == null) {
+        if (username === null || password === null) {
             message.warning("信息不能为空");
             this.setState({signUpLoading: false});
             return;
@@ -87,14 +87,14 @@ class Header extends React.Component {
             mode: 'cors'
         }).then(response => response.json())
             .then(info => {
-                if (info.status != 1) {
+                if (info.status !== 1) {
                     message.error("登录失败，请检查用户名或密码是否正确");
                     console.log(`error message: ${info.msg}`);
                 } else {
                     message.success("登录成功");
                     this.setState({username});
                     localStorage.username = username;
-                    if (this.state.action == "login") {
+                    if (this.state.action === "login") {
                         this.setState({hasLogined: true});
                     }
                     this.setModalVisible(false);
@@ -111,12 +111,12 @@ class Header extends React.Component {
         const username = formData.r_username;
         const password = formData.r_password;
         const confirmPassword = formData.r_confirmPassword;
-        if (username == null || password == null || confirmPassword == null) {
+        if (username === null || password === null || confirmPassword === null) {
             message.warning("信息不能为空");
             this.setState({signUpLoading: false});
             return;
         }
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             message.warning("两次密码不相同");
             this.setState({signUpLoading: false});
             return;
@@ -130,14 +130,14 @@ class Header extends React.Component {
             mode: 'cors',
         }).then(response => response.json())
             .then(info => {
-                if (info.status != 1) {
+                if (info.status !== 1) {
                     message.error("注册失败");
                     console.log(`error message: ${info.msg}`);
                 } else {
                     message.success("已注册，登录成功");
                     this.setState({username});
                     localStorage.username = username;
-                    if (this.state.action == "login") {
+                    if (this.state.action === "login") {
                         this.setState({hasLogined: true});
                     }
                     this.setModalVisible(false);

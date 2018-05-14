@@ -8,8 +8,7 @@ import {
     Rate
 } from 'antd';
 import {
-    Link,
-    Redirect
+    Link
 } from 'react-router-dom'
 
 import './MovieCard.css';
@@ -18,14 +17,9 @@ const {Meta} = Card;
 
 class MovieCard extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-
     render() {
-        const half = parseInt(this.props.score) % 2 == 1 ? 0.5 : 0;
-        const star = parseInt(this.props.score / 2) + half;
+        const half = parseInt(this.props.score, 10) % 2 === 1 ? 0.5 : 0;
+        const star = parseInt(this.props.score / 2, 10) + half;
         const desc =
             <div id="description">
                 <Rate disabled allowHalf value={star}/>{this.props.score}

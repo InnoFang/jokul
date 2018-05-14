@@ -10,11 +10,16 @@ hr {
 }
 
 #play {
+    margin-top: 30px;
     text-align: center;
 }
 
 #overview {
     background: rgba(195, 137, 255, 0.26);
     padding: 15px;
+    border-radius: 15px;
+}
+
+#post {
     border-radius: 15px;
 }
