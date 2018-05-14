@@ -5,6 +5,10 @@
     font-weight: bold;
 }
 
+.movieCard img {
+    border-radius: 3px;
+}
+
 .movieCard:hover {
     transform: scale(1.05);
 }
