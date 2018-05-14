@@ -5,12 +5,18 @@
     font-weight: bold;
 }
 
-.movieCard {
-    border-radius: 15px;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+.movieCard:hover {
+    transform: scale(1.05);
 }
 
-.movieCard:hover {
-    background-size: 100%;
+@keyframes anim {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    50% {
+        transform: translate(0px, -10px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
 }
