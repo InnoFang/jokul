@@ -8,7 +8,8 @@ import {
     Rate
 } from 'antd';
 import {
-    Link
+    Link,
+    Redirect
 } from 'react-router-dom'
 
 import './MovieCard.css';

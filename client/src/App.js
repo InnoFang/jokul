@@ -24,7 +24,6 @@ class App extends React.Component {
     render() {
         return (
             <div>
-
                 <Router>
                     <div>
                         <Header/>

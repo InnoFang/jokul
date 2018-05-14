@@ -40,14 +40,19 @@ class MovieCategoryList extends React.Component {
     constructor() {
         super();
         this.state = {
-            data: [],
-            isLoading: false
+            data: []
         }
     }
 
     componentDidMount() {
-        this.setState({isLoading: true});
+        this.updateUI()
+    }
 
+    componentDidUpdate() {
+        this.updateUI()
+    }
+
+    updateUI() {
         fetch(Api.categoryList(this.props.match.params.type, 0), {
             method: 'GET',
             headers: {

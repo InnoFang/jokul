@@ -40,13 +40,13 @@ class MoviePlay extends React.Component {
         })
             .then(response => response.json())
             .then(req => {
+                setTimeout(hide, 1);
                 if (req.status != 1) {
                     message.error('视频资源获取失败', 10);
                 } else {
                     message.success('视频资源加载成功');
                     this.setState({src: req.data, isLoading: false})
                 }
-                setTimeout(hide, 1);
             })
             .catch(error => console.error('Error:', error));
     }
