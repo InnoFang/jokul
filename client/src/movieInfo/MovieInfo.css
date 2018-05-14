@@ -12,6 +12,19 @@ hr {
 #play {
     margin-top: 30px;
     text-align: center;
+    animation: anim 2s infinite;
+}
+
+@keyframes anim {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    50% {
+        transform: translate(0px, -10px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
 }
 
 #overview {

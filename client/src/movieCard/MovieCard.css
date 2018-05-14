@@ -4,3 +4,13 @@
     font-style: italic;
     font-weight: bold;
 }
+
+.movieCard {
+    border-radius: 15px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.movieCard:hover {
+    background-size: 100%;
+}

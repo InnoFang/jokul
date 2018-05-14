@@ -28,6 +28,7 @@ class MovieCard extends React.Component {
         return (
             <Link to={`/movieInfo/${this.props.title}`} target='_blank'>
                 <Card
+                    className="movieCard"
                     hoverable
                     style={{width: 240}}
                     cover={<img alt="post" src={this.props.post}/>}>
