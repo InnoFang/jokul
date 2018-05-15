@@ -4,7 +4,6 @@
 
 import React from 'react'
 import {
-    Card,
     Rate
 } from 'antd';
 import {
@@ -12,8 +11,6 @@ import {
 } from 'react-router-dom'
 
 import './MovieCard.css';
-
-const {Meta} = Card;
 
 class MovieCard extends React.Component {
 
@@ -27,16 +24,6 @@ class MovieCard extends React.Component {
 
         return (
             <Link to={`/movieInfo/${this.props.title}`} target='_blank'>
-                {/*// <Card*/}
-                {/*//     className="movieCard"*/}
-                {/*//     hoverable*/}
-                {/*//     style={{width: 240}}*/}
-                {/*//     cover={<img alt="post" src={this.props.post}/>}>*/}
-                {/*//     <Meta*/}
-                        {/*title={this.props.title}*/}
-                        {/*description={desc}*/}
-                    {/*/>*/}
-                {/*</Card>*/}
                 <div id="figure">
                     <img alt="post" src={this.props.post}/>
                     <div id="figcaption">
