@@ -1,0 +1,15 @@
+@import '~antd/dist/antd.css';
+
+#pad {
+    border-radius: 5px;
+    background: #e8fffa;
+    box-shadow: 3px 3px 3px #888888;
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 20px;
+}
+
+#info {
+    padding: 30px;
+}

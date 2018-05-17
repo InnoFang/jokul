@@ -15,7 +15,7 @@ import Footer from './footer/footer';
 import MovieInfo from './movieInfo/MovieInfo'
 import MovieCategory from './movieCategory/MovieCategory'
 import MoviePlay from './moviePlay/MoviePlay'
-import Admin from './admin/Admin'
+import MovieUpload from './movieUpload/MovieUpload'
 
 class App extends React.Component {
 
@@ -30,7 +30,7 @@ class App extends React.Component {
                             <Route exact component={MovieInfo} path="/movieInfo/:title"/>
                             <Route exact component={MovieCategory} path="/category"/>
                             <Route exact  component={MoviePlay} path="/play/:movie"/>
-                            <Route exact  component={Admin} path="/admin"/>
+                            <Route exact  component={MovieUpload} path="/upload"/>
                             <Redirect push to="/"/>
                         </Switch>
                     </div>

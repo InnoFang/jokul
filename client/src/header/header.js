@@ -162,7 +162,7 @@ class Header extends React.Component {
 
         const menu = (<Menu>
             <Menu.Item>
-                <Link to="/admin"><Button icon="appstore-o" size="small">视频上传</Button></Link>
+                <Link to="/upload"><Button icon="appstore-o" size="small">资源管理</Button></Link>
             </Menu.Item>
             <Menu.Item>
                 <Button icon="logout" type="danger" size="small" onClick={this.logout.bind(this)}>退出登录</Button>
