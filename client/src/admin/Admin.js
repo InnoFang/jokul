@@ -18,11 +18,14 @@ class Footer extends React.Component {
                 <br/>
                 <br/>
                 <Row>
-                    <Col span={4}/>
-                    <Col span={16}>
-                        <h1>For admin</h1>
+                    <Col span={5}/>
+                    <Col span={14}>
+                        <div id="info-pad">
+                            <h1>For admin</h1>
+                        </div>
+
                     </Col>
-                    <Col span={4}/>
+                    <Col span={5}/>
                 </Row>
             </div>
         )

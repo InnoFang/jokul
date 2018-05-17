@@ -14,7 +14,8 @@ import {
     Input,
     Button,
     Dropdown,
-    Modal
+    Modal,
+    Checkbox
 } from 'antd';
 import {
     Link
@@ -37,6 +38,7 @@ class Header extends React.Component {
             username: '',
             signInLoading: false,
             signUpLoading: false,
+            isAdmin: false
         }
     }
 
@@ -152,14 +154,18 @@ class Header extends React.Component {
         this.setState({hasLogined: false});
     };
 
+    onHandleAdminToggle(e) {
+        this.setState({isAdmin: !this.state.isAdmin});
+    }
+
     render() {
 
         const menu = (<Menu>
             <Menu.Item>
-                <Link to="/admin" ><Button icon="logout" type="dashed" size="small">管理员</Button></Link>
+                <Link to="/admin"><Button icon="appstore-o" size="small">视频上传</Button></Link>
             </Menu.Item>
             <Menu.Item>
-                <Button icon="logout" type="dashed" size="small" onClick={this.logout.bind(this)}>退出登录</Button>
+                <Button icon="logout" type="danger" size="small" onClick={this.logout.bind(this)}>退出登录</Button>
             </Menu.Item>
         </Menu>);
 
@@ -218,47 +224,61 @@ class Header extends React.Component {
                             <Form horizontal onSubmit={this.handleSignIn.bind(this)} className="login-form">
                                 <FormItem label="用户名">
                                     {getFieldDecorator('username', {
-                                        rules: [{ required: true, message: '请输入你的用户名！' }],
+                                        rules: [{required: true, message: '请输入你的用户名！'}],
                                     })(
-                                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />
+                                        <Input prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                                               placeholder="用户名"/>
                                     )}
                                 </FormItem>
                                 <FormItem label="密码">
                                     {getFieldDecorator('password', {
-                                        rules: [{ required: true, message: '请输入你的密码！' }],
+                                        rules: [{required: true, message: '请输入你的密码！'}],
                                     })(
-                                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />
+                                        <Input prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                                               type="password" placeholder="密码"/>
                                     )}
                                 </FormItem>
-                                <Button type="primary" htmlType="submit" loading={this.state.signInLoading} className="login-form-button">登录</Button>
+                                <FormItem>
+                                    <Checkbox onChange={this.onHandleAdminToggle.bind(this)}>管 理 员</Checkbox>
+                                </FormItem>
+                                <Button type="primary" htmlType="submit" loading={this.state.signInLoading}
+                                        className="login-form-button">登录</Button>
                             </Form>
                         </TabPane>
 
                         <TabPane tab="注册" key="2">
-                            <Form horizontal="true" onSubmit={this.handleSignUp.bind(this)}  className="login-form">
+                            <Form horizontal="true" onSubmit={this.handleSignUp.bind(this)} className="login-form">
                                 <FormItem label="用户名">
                                     {getFieldDecorator('r_username', {
-                                        rules: [{ required: true, message: '请输入你的用户名！' }],
+                                        rules: [{required: true, message: '请输入你的用户名！'}],
                                     })(
-                                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />
+                                        <Input prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                                               placeholder="用户名"/>
                                     )}
                                 </FormItem>
                                 <FormItem label="密码">
                                     {getFieldDecorator('r_password', {
-                                        rules: [{ required: true, message: '请输入你的密码！' }],
+                                        rules: [{required: true, message: '请输入你的密码！'}],
                                     })(
-                                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />
+                                        <Input prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                                               type="password" placeholder="密码"/>
                                     )}
                                 </FormItem>
                                 <FormItem label="确认密码">
                                     {getFieldDecorator('r_confirmPassword', {
                                         rules: [{
-                                            required: true, message: '请确认你的密码'}]
-                                        })(
-                                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="再次输入密码"/>
+                                            required: true, message: '请确认你的密码'
+                                        }]
+                                    })(
+                                        <Input prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                                               type="password" placeholder="再次输入密码"/>
                                     )}
                                 </FormItem>
-                                <Button type="primary" htmlType="submit" loading={this.state.signUpLoading}  className="login-form-button">注册</Button>
+                                <FormItem>
+                                    <Checkbox onChange={this.onHandleAdminToggle.bind(this)}>管 理 员</Checkbox>
+                                </FormItem>
+                                <Button type="primary" htmlType="submit" loading={this.state.signUpLoading}
+                                        className="login-form-button">注册</Button>
                             </Form>
                         </TabPane>
                     </Tabs>
