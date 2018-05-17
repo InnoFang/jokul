@@ -3,25 +3,15 @@
  */
 
 import React from 'react';
-import {
-    Row,
-    Col
-} from 'antd';
 import MovieList from '../movieList/MovieList';
-import './Home.css'
+import IconTitle from '../iconTitle/IconTitle'
 
 class Home extends React.Component {
 
     render() {
         return (
             <div>
-                <Row >
-                    <Col span={24}>
-                        <div id="title">
-                            <img id="bigImg" src={require('../images/JOKUL.png')} alt="logo"/>
-                        </div>
-                    </Col>
-                </Row>
+                <IconTitle/>
                 <br/>
                 <br/>
                 <MovieList/>

@@ -156,6 +156,9 @@ class Header extends React.Component {
 
         const menu = (<Menu>
             <Menu.Item>
+                <Link to="/admin" ><Button icon="logout" type="dashed" size="small">管理员</Button></Link>
+            </Menu.Item>
+            <Menu.Item>
                 <Button icon="logout" type="dashed" size="small" onClick={this.logout.bind(this)}>退出登录</Button>
             </Menu.Item>
         </Menu>);
