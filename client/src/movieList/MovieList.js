@@ -45,13 +45,12 @@ class MovieList extends React.Component {
         super(props);
         this.state = {
             data: [],
-            isLoading: false,
             count: 0
         }
     }
 
     componentDidMount() {
-        this.setState({isLoading: true});
+        this.fetchDataCount();
         this.fetchData(0);
     }
 
@@ -61,21 +60,22 @@ class MovieList extends React.Component {
         this.fetchData(pageNumber - 1);
     }
 
-    fetchData(page) {
-
+    fetchDataCount() {
         // 获取电影数量 get movie count
         fetch(Api.movieCount(), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/js on',
+                'Content-Type': 'application/json',
             },
             mode: 'cors',
         })
             .then(response => response.json())
             .then(info => this.setState({count: info.data}))
             .catch(error => console.error('Error:', error));
+    }
 
+    fetchData(page) {
         // 获取电影信息列表 get movie info list
         fetch(Api.movieList(page), {
             method: 'GET',

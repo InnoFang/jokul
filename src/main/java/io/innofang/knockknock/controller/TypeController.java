@@ -34,6 +34,12 @@ public class TypeController {
         return ResultUtil.success(ResultEnum.GET_MOVIE_TYPE_LIST, movies);
     }
 
+    @GetMapping(value = "/count/{type}")
+    public Result<Long> getTypeCount(@PathVariable("type") String type) {
+        return ResultUtil.success(ResultEnum.GET_MOVIE_COUNT, typeRepository.countByName(type));
+    }
+
+
     @GetMapping(value = "/types")
     public Result<List<Type>> getAllTypes() {
         return ResultUtil.success(ResultEnum.GET_TYPES, typeRepository.findAll());

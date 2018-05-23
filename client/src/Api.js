@@ -9,6 +9,7 @@ const Api = {
     'movieCount': () => `${root}/movie-count`,
     'movieDetail': (title) => `${root}/${title}`,
     'types': () => `${root}/types`,
+    'typeCount': (type) => `${root}/count/${type}`,
     'categoryList': (type, page) => `${root}/${type}/${page}`,
     'playMovie': (movie) => `${root}/play/${movie}`,
     'userSignUp':  (username, password) => `${root}/user/sign-up?username=${username}&password=${password}`,

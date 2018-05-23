@@ -18,4 +18,6 @@ public interface TypeRepository extends JpaRepository<Type, Long> {
 
     @Query(nativeQuery = true)
     List<Movie> findMovies(@Param("typeName") String type, Pageable pageable);
+
+    long countByName(String name);
 }
