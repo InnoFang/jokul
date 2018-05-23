@@ -5,7 +5,8 @@
 import React from 'react';
 import {
     Row,
-    Col
+    Col,
+    Pagination
 } from 'antd';
 import MovieCard from '../movieCard/MovieCard'
 import Api from '../Api'
@@ -46,15 +47,20 @@ class MovieCategoryList extends React.Component {
     }
 
     componentDidMount() {
-        this.updateUI()
+        this.fetchData(0)
     }
 
     componentDidUpdate() {
-        this.updateUI()
+        this.fetchData(0)
     }
 
-    updateUI() {
-        fetch(Api.categoryList(this.props.match.params.type, 0), {
+    onPageChange(pageNumber) {
+        console.log('Page: ', pageNumber);
+        this.fetchData(pageNumber - 1);
+    }
+
+    fetchData(page) {
+        fetch(Api.categoryList(this.props.match.params.type, page), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -81,6 +87,18 @@ class MovieCategoryList extends React.Component {
                 <Row>
                     <Rows movies={data}/>
                 </Row>
+                <br/>
+                <br/>
+                <br/>
+                <Row>
+                    <Col span={24} id="pagination">
+                        <Pagination defaultCurrent={1} total={13} pageSize={12}
+                                    onChange={this.onPageChange.bind(this)}/>
+                    </Col>
+                </Row>
+                <br/>
+                <br/>
+                <br/>
             </div>
         );
     }

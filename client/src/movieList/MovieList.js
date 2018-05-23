@@ -46,14 +46,25 @@ class MovieList extends React.Component {
         this.state = {
             data: [],
             isLoading: false,
-            page: 1
+            count: 0
         }
     }
 
     componentDidMount() {
         this.setState({isLoading: true});
+        this.fetchData(0);
+    }
 
-        fetch(Api.movieList(this.state.page - 1), {
+
+    onPageChange(pageNumber) {
+        console.log('Page: ', pageNumber);
+        this.fetchData(pageNumber - 1);
+    }
+
+    fetchData(page) {
+
+        // 获取电影数量 get movie count
+        fetch(Api.movieCount(), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -62,21 +73,28 @@ class MovieList extends React.Component {
             mode: 'cors',
         })
             .then(response => response.json())
-            .then(info => this.setState({data: info.data, isLoading: false}))
+            .then(info => this.setState({count: info.data}))
             .catch(error => console.error('Error:', error));
-    }
 
-
-    onPageChange(pageNumber) {
-        this.setState({page: pageNumber});
-        console.log('Page: ', pageNumber);
+        // 获取电影信息列表 get movie info list
+        fetch(Api.movieList(page), {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/js on',
+            },
+            mode: 'cors',
+        })
+            .then(response => response.json())
+            .then(info => this.setState({data: info.data}))
+            .catch(error => console.error('Error:', error));
     }
 
     render() {
 
-        let {data} = this.state;
+        let {data, count} = this.state;
 
-        if (data[0] == null) {
+        if (data[0] == null || count == null) {
             return <div></div>;
         }
 
@@ -90,7 +108,7 @@ class MovieList extends React.Component {
                 <br/>
                 <Row>
                     <Col span={24} id="pagination">
-                        <Pagination defaultCurrent={this.state.page} total={12} pageSize={12}
+                        <Pagination defaultCurrent={1} total={count} pageSize={12}
                                     onChange={this.onPageChange.bind(this)}/>
                     </Col>
                 </Row>

@@ -30,6 +30,10 @@ public class MovieController {
         return ResultUtil.success(ResultEnum.GET_MOVIE_INFO_LIST, movies.getContent());
     }
 
+    @GetMapping(value = "/movie-count")
+    public Result<Long> getMovieCount() {
+        return ResultUtil.success(ResultEnum.GET_MOVIE_COUNT, movieRepository.count());
+    }
 
     @GetMapping(value = "/{title}")
     public Result<Movie> getMovieDetail(@PathVariable("title") String title) {
