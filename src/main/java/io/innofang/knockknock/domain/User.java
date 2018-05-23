@@ -22,7 +22,7 @@ public class User {
 
     private String password;
 
-    @ColumnDefault("1")
+    @ColumnDefault("0")
     private Integer permission;
 
     public Long getId() {

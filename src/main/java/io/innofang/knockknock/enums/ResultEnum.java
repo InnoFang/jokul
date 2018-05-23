@@ -18,6 +18,7 @@ public enum ResultEnum {
     USER_DUPLICATE(-1, "user duplicated"),
     USER_MISSED(-1, "user missed"),
     WRONG_PASSWORD(-1, "wrong password"),
+    PERMISSION_DENIED(-1, "permission denied"),
     UNKNOWN_ERROR(-1, "unknown"),
     MOVIE_NOT_FOUND(-1, "movie not found"),
     ;

@@ -12,8 +12,8 @@ const Api = {
     'typeCount': (type) => `${root}/count/${type}`,
     'categoryList': (type, page) => `${root}/${type}/${page}`,
     'playMovie': (movie) => `${root}/play/${movie}`,
-    'userSignUp':  (username, password) => `${root}/user/sign-up?username=${username}&password=${password}`,
-    'userSignIn': (username, password) => `${root}/user/sign-in?username=${username}&password=${password}`,
+    'userSignUp': (username, password, permission) => `${root}/user/sign-up?username=${username}&password=${password}&permission=${permission}`,
+    'userSignIn': (username, password, permission) => `${root}/user/sign-in?username=${username}&password=${password}&permission=${permission}`,
 };
 
 export default Api;

@@ -38,15 +38,19 @@ class Header extends React.Component {
             username: '',
             signInLoading: false,
             signUpLoading: false,
-            isAdmin: false
+            permission: '0'
         }
     }
 
     componentWillMount() {
+        console.log(typeof localStorage.permission);
+        console.log(localStorage.permission);
+        console.log(localStorage.permission !== '0');
         if (localStorage.username !== '') {
             this.setState({
                 hasLogined: true,
-                username: localStorage.username
+                username: localStorage.username,
+                permission: localStorage.permission
             });
         }
     };
@@ -74,13 +78,14 @@ class Header extends React.Component {
         // console.log(formData);
         const username = formData.username;
         const password = formData.password;
+        const permission = formData.permission ? 1 : 0;
 
         if (username === null || password === null) {
             message.warning("信息不能为空");
             this.setState({signUpLoading: false});
             return;
         }
-        fetch(Api.userSignIn(username, password), {
+        fetch(Api.userSignIn(username, password, permission), {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -96,6 +101,7 @@ class Header extends React.Component {
                     message.success("登录成功");
                     this.setState({username});
                     localStorage.username = username;
+                    localStorage.permission = `${permission}`;
                     if (this.state.action === "login") {
                         this.setState({hasLogined: true});
                     }
@@ -109,10 +115,11 @@ class Header extends React.Component {
         e.preventDefault();
         this.setState({signUpLoading: true});
         const formData = this.props.form.getFieldsValue();
-        console.log(formData);
+        // console.log(formData);
         const username = formData.r_username;
         const password = formData.r_password;
         const confirmPassword = formData.r_confirmPassword;
+        const permission = formData.r_permission ? 1 : 0;
         if (username === null || password === null || confirmPassword === null) {
             message.warning("信息不能为空");
             this.setState({signUpLoading: false});
@@ -123,7 +130,7 @@ class Header extends React.Component {
             this.setState({signUpLoading: false});
             return;
         }
-        fetch(Api.userSignUp(username, password), {
+        fetch(Api.userSignUp(username, password, permission), {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -139,6 +146,7 @@ class Header extends React.Component {
                     message.success("已注册，登录成功");
                     this.setState({username});
                     localStorage.username = username;
+                    localStorage.permission = `${permission}`;
                     if (this.state.action === "login") {
                         this.setState({hasLogined: true});
                     }
@@ -151,6 +159,7 @@ class Header extends React.Component {
 
     logout() {
         localStorage.username = '';
+        localStorage.permission = '0';
         this.setState({hasLogined: false});
     };
 
@@ -160,10 +169,16 @@ class Header extends React.Component {
 
     render() {
 
-        const menu = (<Menu>
+        const upload = this.state.permission !== "0" ?
             <Menu.Item>
                 <Link to="/upload"><Button icon="appstore-o" size="small">资源管理</Button></Link>
             </Menu.Item>
+            :
+            <div></div>;
+
+
+        const menu = (<Menu>
+            {upload}
             <Menu.Item>
                 <Button icon="logout" type="danger" size="small" onClick={this.logout.bind(this)}>退出登录</Button>
             </Menu.Item>
@@ -239,7 +254,12 @@ class Header extends React.Component {
                                     )}
                                 </FormItem>
                                 <FormItem>
-                                    <Checkbox onChange={this.onHandleAdminToggle.bind(this)}>管 理 员</Checkbox>
+                                    {getFieldDecorator('permission', {
+                                        valuePropName: 'unchecked',
+                                        initialValue: false,
+                                    })(
+                                        <Checkbox onChange={this.onHandleAdminToggle.bind(this)}>管 理 员</Checkbox>
+                                    )}
                                 </FormItem>
                                 <Button type="primary" htmlType="submit" loading={this.state.signInLoading}
                                         className="login-form-button">登录</Button>
@@ -275,7 +295,12 @@ class Header extends React.Component {
                                     )}
                                 </FormItem>
                                 <FormItem>
-                                    <Checkbox onChange={this.onHandleAdminToggle.bind(this)}>管 理 员</Checkbox>
+                                    {getFieldDecorator('r_permission', {
+                                        valuePropName: 'unchecked',
+                                        initialValue: false,
+                                    })(
+                                        <Checkbox onChange={this.onHandleAdminToggle.bind(this)}>管 理 员</Checkbox>
+                                    )}
                                 </FormItem>
                                 <Button type="primary" htmlType="submit" loading={this.state.signUpLoading}
                                         className="login-form-button">注册</Button>
