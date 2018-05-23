@@ -3,3 +3,7 @@
 #pagination {
     text-align: center;
 }
+
+#movieItem {
+    font-weight: bold;
+}

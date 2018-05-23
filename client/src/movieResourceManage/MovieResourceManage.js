@@ -16,7 +16,12 @@ import {
     InputNumber,
     message,
     Tabs,
-    Divider
+    Checkbox,
+    Divider,
+    Popover,
+    Pagination,
+    notification,
+    Spin
 } from 'antd';
 import IconTitle from '../iconTitle/IconTitle'
 import './MovieResourceManage.css'
@@ -35,20 +40,55 @@ class MovieResourceManage extends React.Component {
         this.state = {
             post: 'http://via.placeholder.com/300x150?text=post',
             uploadLoading: false,
+            data: [],
+            count: 0,
+            selectedMovie: []
         }
+    }
+
+    componentDidMount() {
+        this.fetchDataCount();
+        this.fetchData(0);
+    }
+
+
+    onPageChange(pageNumber) {
+        console.log('Page: ', pageNumber);
+        this.fetchData(pageNumber - 1);
+    }
+
+    fetchDataCount() {
+        // 获取电影数量 get movie count
+        fetch(Api.movieCount(), {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            mode: 'cors',
+        })
+            .then(response => response.json())
+            .then(info => this.setState({count: info.data}))
+            .catch(error => console.error('Error:', error));
+    }
+
+    fetchData(page) {
+        // 获取电影信息列表 get movie info list
+        fetch(Api.movieList(page), {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/js on',
+            },
+            mode: 'cors',
+        })
+            .then(response => response.json())
+            .then(info => this.setState({data: info.data}))
+            .catch(error => console.error('Error:', error));
     }
 
     handleSubmit(e) {
         e.preventDefault();
-
-        // this.props.form.validateFields((err, values) => {
-        //     if (!err) {
-        //         // console.log('Received values of form: ', values);
-        //
-        //
-        //     }
-        // });
-
         this.setState({uploadLoading: true});
 
         const formData = this.props.form.getFieldsValue();
@@ -105,7 +145,42 @@ class MovieResourceManage extends React.Component {
         }
     };
 
+    onSelectedMovie(checkedValues) {
+        // console.log('checked = ', checkedValues);
+        this.setState({selectedMovie: checkedValues});
+    }
+
+    onHandleDelete() {
+        if (this.state.selectedMovie.length === 0) {
+            notification.info({
+                message: "提醒",
+                description: "未选中任何电影",
+                duration: 3,
+                key: `open${Date.now()}`,
+                placement: "topLeft"
+            })
+        } else {
+            notification.warning(
+                {
+                    message: '你确认要删除这些电影资源吗？',
+                    description: this.state.selectedMovie.join("\n"),
+                    btn: (<Button icon="delete" type="danger" ghost>
+                        确 认 </Button>),
+                    key: `open${Date.now()}`,
+                    placement: "topLeft"
+                }
+            )
+        }
+
+    }
+
     render() {
+
+        let {data, count, selectedMovie} = this.state;
+
+        if (data[0] == null || count == null) {
+            return <div></div>;
+        }
 
         const {getFieldDecorator} = this.props.form;
         const formItemLayout = {
@@ -314,7 +389,43 @@ class MovieResourceManage extends React.Component {
                                     </div>
                                 </TabPane>
                                 <TabPane tab={<span><Icon type="delete"/>电影删除</span>} key="2">
-                                    <h1>Delete</h1>
+                                    <br/>
+                                    <br/>
+                                    <Row>
+
+                                        <Col span={2}/>
+                                        <Col span={2}>
+                                            <Button icon="delete" type="danger" ghost
+                                                    onClick={this.onHandleDelete.bind(this)}> 删 除 </Button>
+                                        </Col>
+                                        <Col span={2}/>
+                                        <Col span={10}>
+                                            <Checkbox.Group style={{width: '100%'}}
+                                                            onChange={this.onSelectedMovie.bind(this)}>
+                                                {data.map(item =>
+                                                    <div id="movieItem">
+                                                        <Popover content={<img src={item.post} alt="post"/>}
+                                                                 placement="rightTop">
+                                                            <Checkbox value={item.title}
+                                                                      key={item.title}>{item.title}</Checkbox>
+                                                            <br/><br/>
+                                                        </Popover>
+                                                    </div>
+                                                )}
+                                            </Checkbox.Group>
+                                        </Col>
+                                    </Row>
+                                    <br/>
+                                    <br/>
+                                    <Row>
+                                        <Col span={6}/>
+                                        <Col span={10}>
+                                            <Pagination defaultCurrent={1} total={count} pageSize={12}
+                                                        onChange={this.onPageChange.bind(this)}/>
+                                        </Col>
+                                    </Row>
+                                    <br/>
+                                    <br/>
                                 </TabPane>
                             </Tabs>
                         </div>
