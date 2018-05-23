@@ -5,8 +5,10 @@
 import React from 'react';
 import {
     Row,
-    Col
+    Col,
+    Pagination
 } from 'antd';
+
 import MovieCard from '../movieCard/MovieCard'
 import './MovieList.css'
 import Api from '../Api'
@@ -39,18 +41,19 @@ function Rows(props) {
 }
 
 class MovieList extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             data: [],
-            isLoading: false
+            isLoading: false,
+            page: 1
         }
     }
 
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch(Api.movieList(0), {
+        fetch(Api.movieList(this.state.page - 1), {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -61,6 +64,12 @@ class MovieList extends React.Component {
             .then(response => response.json())
             .then(info => this.setState({data: info.data, isLoading: false}))
             .catch(error => console.error('Error:', error));
+    }
+
+
+    onPageChange(pageNumber) {
+        this.setState({page: pageNumber});
+        console.log('Page: ', pageNumber);
     }
 
     render() {
@@ -77,6 +86,14 @@ class MovieList extends React.Component {
                     <Rows key="movie-list" movies={data}/>
                 </Row>
                 <br/>
+                <br/>
+                <br/>
+                <Row>
+                    <Col span={24} id="pagination">
+                        <Pagination defaultCurrent={this.state.page} total={12} pageSize={12}
+                                    onChange={this.onPageChange.bind(this)}/>
+                    </Col>
+                </Row>
                 <br/>
                 <br/>
                 <br/>

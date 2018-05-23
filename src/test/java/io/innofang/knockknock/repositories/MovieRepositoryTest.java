@@ -33,7 +33,8 @@ public class MovieRepositoryTest {
     private List<Movie> movies = new ArrayList<>();
 
     @Before
-    public void init(){
+    public void init() {
+       /*
         Movie inception = new Movie();
         inception.setTitle("盗梦空间");
         inception.setScore(9.2);
@@ -274,6 +275,27 @@ public class MovieRepositoryTest {
         hacksawRidgeType.add(typeRepository.findByName("战争"));
         hacksawRidge.setType(hacksawRidgeType);
         movies.add(hacksawRidge);
+        */
+
+        // operation MeiKong 湄公河行动
+        Movie operationMeiKong = new Movie();
+        operationMeiKong.setTitle("湄公河行动");
+        operationMeiKong.setScore(8.0);
+        operationMeiKong.setAlias("Operation MeiKong");
+        operationMeiKong.setReleaseDate("2016-09-30(中国大陆)");
+        operationMeiKong.setLength(124);
+        operationMeiKong.setDirector("林超贤");
+        operationMeiKong.setScreenwriter("林超贤  朱镜祺  刘小群  谭惠贞  林明杰");
+        operationMeiKong.setCast("张涵予  彭于晏  孙淳  陈宝国  冯文娟  刘显达  赵健  吴旭东  吴嘉龙  卢惠光  柏华力·莫高彼斯彻  维他亚·潘斯林加姆  战立国  石占杰  伍麟凯  Zobra  魏蔓 李佳璇  郝文婷  王笑龙  任蕊  Bhubhing Bhangsa-Ard  Achaya Vishwanath Govind  Nitidet Chery Junphli  Keerali Sivakuae  Alyaret Junamnoong Vattcharachai Sunthomsin  Sarawut Kumsorn  Nongmal Bunchu  S");
+        operationMeiKong.setOverview("金三角湄公河上，一处被称为“鬼门关”的河段，两艘来自中国的商船遭到不明身份之人的枪击袭击。未过多久，泰国军方召开新闻发布会，指责中国商船贩卖毒品。虽然发布会宣称船员全部逃亡，但是十三具遭受残忍杀害的中国船员尸体很快被人发现。这起胆大妄为的案件令中国警方大为震惊，云南省缉毒总队队长高刚（张涵予 饰）受命带特别行动小组前往泰国，并与情报员方新武（彭于晏 饰）合作接洽。根据现有资料显示，这件案子由盘踞在金三角的大毒枭糯卡所为。糯卡贪婪残忍，胆大包天，是湄公河流域上一颗惊扰运输安全的毒瘤。为了将这个恶棍绳之于法，中国、老挝、缅甸开展了三国联合巡逻，集中对糯卡的制毒窝点进行扫荡。而高刚等人也深入最危险境地，与丧失人性的贩毒分子进行惨烈对决…… \n" +
+                "　　本片根据真实事件改编。");
+        operationMeiKong.setPost("https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2380677316.jpg");
+        Set<Type> operationMeiKongType = new HashSet<>();
+        operationMeiKongType.add(typeRepository.findByName("动作"));
+        operationMeiKongType.add(typeRepository.findByName("犯罪"));
+        operationMeiKong.setType(operationMeiKongType);
+        movies.add(operationMeiKong);
+
     }
 
     @Test
