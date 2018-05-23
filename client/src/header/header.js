@@ -43,9 +43,6 @@ class Header extends React.Component {
     }
 
     componentWillMount() {
-        console.log(typeof localStorage.permission);
-        console.log(localStorage.permission);
-        console.log(localStorage.permission !== '0');
         if (localStorage.username !== '') {
             this.setState({
                 hasLogined: true,

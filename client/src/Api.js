@@ -7,6 +7,7 @@ const root = 'http://localhost:8080/jokul';
 const Api = {
     'movieList': (page) => `${root}/movie-list/${page}`,
     'movieCount': () => `${root}/movie-count`,
+    'addMovie': () => `${root}/add-movie`,
     'movieDetail': (title) => `${root}/${title}`,
     'types': () => `${root}/types`,
     'typeCount': (type) => `${root}/count/${type}`,

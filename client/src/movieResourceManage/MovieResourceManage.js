@@ -12,7 +12,6 @@ import {
     Slider,
     Upload,
     Icon,
-    Rate,
     Input,
     InputNumber,
     message,
@@ -35,16 +34,67 @@ class MovieResourceManage extends React.Component {
         super(props);
         this.state = {
             post: 'http://via.placeholder.com/300x150?text=post',
+            uploadLoading: false,
         }
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
+
+        // this.props.form.validateFields((err, values) => {
+        //     if (!err) {
+        //         // console.log('Received values of form: ', values);
+        //
+        //
+        //     }
+        // });
+
+        this.setState({uploadLoading: true});
+
+        const formData = this.props.form.getFieldsValue();
+
+        console.log(formData);
+
+        const title = formData.title;
+        const score = formData.score;
+        const alias = formData.alias;
+        const releaseDate = formData.releaseDate;
+        const length = formData.length;
+        const director = formData.director.join(" ");
+        const screenwriter = formData.screenwriter.join(" ");
+        const cast = formData.cast.join(" ");
+        const overview = formData.overview;
+        const post = formData.post;
+
+        fetch(Api.addMovie(), {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            body: JSON.stringify({
+                title: title,
+                score: score,
+                alias: alias,
+                releaseDate: releaseDate,
+                length: length,
+                director: director,
+                screenwriter: screenwriter,
+                cast: cast,
+                overview: overview,
+                post: post
+            })
+        }).then(response => response.json())
+            .then(info => {
+                if (info.status !== 1) {
+                    message.error("电影添加失败");
+                    console.log(`error message: ${info.msg}`);
+                } else {
+                    message.success("电影添加成功");
+                }
+                this.setState({uploadLoading: false});
+            });
     };
 
     onHandleChangePostUrl(e) {
@@ -91,9 +141,9 @@ class MovieResourceManage extends React.Component {
                         <div id="pad">
                             <Divider orientation="left"><h2>电影资源管理</h2></Divider>
                             <Tabs defaultActiveKey="1">
-                                <TabPane tab={<span><Icon type="cloud-upload" />资源上传</span>} key="1">
+                                <TabPane tab={<span><Icon type="cloud-upload"/>资源上传</span>} key="1">
                                     <div id="info">
-                                        <Form>
+                                        <Form onSubmit={this.handleSubmit.bind(this)}>
                                             <FormItem
                                                 {...formItemLayout}
                                                 label="电影名">
@@ -255,14 +305,15 @@ class MovieResourceManage extends React.Component {
                                                 )}
                                             </FormItem>
                                             <FormItem
-                                                wrapperCol={{ span: 12, offset: 6 }}
+                                                wrapperCol={{span: 12, offset: 6}}
                                             >
-                                                <Button type="primary" htmlType="submit"> 上 传 </Button>
+                                                <Button type="primary" htmlType="submit"
+                                                        loading={this.state.uploadLoading}> 上 传 </Button>
                                             </FormItem>
                                         </Form>
                                     </div>
                                 </TabPane>
-                                <TabPane tab={<span><Icon type="delete" />电影删除</span>} key="2">
+                                <TabPane tab={<span><Icon type="delete"/>电影删除</span>} key="2">
                                     <h1>Delete</h1>
                                 </TabPane>
                             </Tabs>
