@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,6 +38,12 @@ public class MovieController {
             throw new MovieNotFoundException(ResultEnum.MOVIE_NOT_FOUND);
         }
         return ResultUtil.success(ResultEnum.GET_MOVIE_DETAIL, movie);
+    }
+
+    @PostMapping(value = "/add-movie")
+    public Result addMovie(@RequestBody Movie movie) {
+        movieRepository.save(movie);
+        return ResultUtil.success(ResultEnum.ADD_MOVIE);
     }
 
 }

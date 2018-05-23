@@ -12,6 +12,7 @@ public enum ResultEnum {
     GET_MOVIE_DETAIL(1, "successfully to get movie detail"),
     GET_TYPES(1, "successfully to get types"),
     UPLOAD_MOVIE_FILE(1, "successfully to load movie file"),
+    ADD_MOVIE(1, "successfully to add movie"),
     USER_DUPLICATE(-1, "user duplicated"),
     USER_MISSED(-1, "user missed"),
     WRONG_PASSWORD(-1, "wrong password"),

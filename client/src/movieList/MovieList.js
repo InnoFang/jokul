@@ -54,7 +54,7 @@ class MovieList extends React.Component {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/js on',
             },
             mode: 'cors',
         })
