@@ -1,5 +1,6 @@
 package io.innofang.knockknock.controller;
 
+import io.innofang.knockknock.repositories.MovieRepository;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,15 +26,25 @@ public class MovieControllerTest {
     @Autowired
     private MockMvc mvc;
 
+    @Autowired
+    private MovieRepository movieRepository;
+
     private static void handle(MvcResult handler) {
         System.out.println(handler.getAsyncResult());
     }
 
-//    @Test
-////    @Ignore
-//    public void getMovieList() throws Exception {
-//        mvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/knockknock/movieinfolist"))
-////                .andDo(MovieControllerTest::handle)
-//                .andExpect(MockMvcResultMatchers.status().isOk());
-//    }
+    //@Test
+    //@Ignore
+    //public void getMovieList() throws Exception {
+    //    mvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/knockknock/movieinfolist"))
+    //            .andDo(MovieControllerTest::handle)
+    //            .andExpect(MockMvcResultMatchers.status().isOk());
+    //
+    //}
+
+    @Test
+    @Ignore
+    public void findMovieByTitle() {
+        //System.out.println(movieRepository.findByTitle("123"));
+    }
 }

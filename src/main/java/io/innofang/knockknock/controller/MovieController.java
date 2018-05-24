@@ -46,6 +46,10 @@ public class MovieController {
 
     @PostMapping(value = "/add-movie")
     public Result addMovie(@RequestBody Movie movie) {
+        Movie find = movieRepository.findByTitle(movie.getTitle());
+        if (movie != null) {
+            return ResultUtil.error(ResultEnum.MOVIE_DUPLICATE);
+        }
         movieRepository.save(movie);
         return ResultUtil.success(ResultEnum.ADD_MOVIE);
     }

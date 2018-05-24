@@ -23,6 +23,7 @@ public enum ResultEnum {
     PERMISSION_DENIED(-1, "permission denied"),
     UNKNOWN_ERROR(-1, "unknown"),
     MOVIE_NOT_FOUND(-1, "movie not found"),
+    MOVIE_DUPLICATE(-1, "movie duplicate"),
     ;
     private Integer status;
     private String msg;
