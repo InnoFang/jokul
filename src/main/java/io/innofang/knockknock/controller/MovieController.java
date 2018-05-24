@@ -52,7 +52,7 @@ public class MovieController {
     }
 
     @PostMapping(value = "/add-movie/{type}")
-    public Result addMovie(@PathVariable("type") String type,
+    public Result addMovieInfo(@PathVariable("type") String type,
                            @RequestBody Movie movie) {
         Movie find = movieRepository.findByTitle(movie.getTitle());
         if (find != null) {
@@ -68,7 +68,7 @@ public class MovieController {
     }
 
     @PostMapping(value = "/delete/{title}")
-    public Result deleteMovie(@PathVariable("title") String title) {
+    public Result deleteMovieInfo(@PathVariable("title") String title) {
         Movie movie = movieRepository.findByTitle(title);
         if (movie == null) {
             return ResultUtil.error(ResultEnum.MOVIE_NOT_FOUND);
@@ -80,7 +80,7 @@ public class MovieController {
     @PostMapping(value = "/delete-more/{movies}")
     public Result deleteMovies(@PathVariable("movies") String selectedMovies) {
         for (String movie : selectedMovies.split("&")) {
-            Result result = deleteMovie(movie);
+            Result result = deleteMovieInfo(movie);
             if (!result.getStatus().equals(ResultEnum.DELETE_MOVIE.getStatus())) {
                 return result;
             }

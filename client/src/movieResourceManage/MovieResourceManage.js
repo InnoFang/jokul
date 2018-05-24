@@ -31,6 +31,7 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const {TextArea} = Input;
 const TabPane = Tabs.TabPane;
+const Dragger = Upload.Dragger;
 
 class MovieResourceManage extends React.Component {
 
@@ -44,6 +45,25 @@ class MovieResourceManage extends React.Component {
             data: [],
             count: 0,
             selectedMovies: []
+        };
+
+        this.uploadProps = {
+            name: 'file',
+            multiple: true,
+            action: Api.uploadMovie(),
+            onChange(info) {
+                console.log(info);
+                message.info("上传完成，结果未知，查看console获取");
+                // const status = info.file.status;
+                // if (status !== 'uploading') {
+                //     console.log(info.file, info.fileList);
+                // }
+                // if (status === 'done') {
+                //     message.success(`${info.file.name} file uploaded successfully.`);
+                // } else if (status === 'error') {
+                //     message.error(`${info.file.name} file upload failed.`);
+                // }
+            },
         }
     }
 
@@ -109,7 +129,7 @@ class MovieResourceManage extends React.Component {
         const post = formData.post;
         const movieType = formData.movieType;
 
-        fetch(Api.addMovie(movieType), {
+        fetch(Api.addMovieInfo(movieType), {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -390,21 +410,6 @@ class MovieResourceManage extends React.Component {
                                             </FormItem>
                                             <FormItem
                                                 {...formItemLayout}
-                                                label="海报">
-                                                {getFieldDecorator('post', {
-                                                    rules: [{required: true, message: '请输入海报 URL！'}],
-                                                })(
-                                                    <div>
-                                                        <Input
-                                                            onChange={this.onHandleChangePostUrl.bind(this)}
-                                                            defaultValue={""} />
-                                                        <br />
-                                                        <img src={this.state.post} alt="post"/>
-                                                    </div>
-                                                )}
-                                            </FormItem>
-                                            <FormItem
-                                                {...formItemLayout}
                                                 label="剧情">
                                                 {getFieldDecorator('overview', {
                                                     rules: [{required: true, message: '请输入剧情！'}],
@@ -414,18 +419,29 @@ class MovieResourceManage extends React.Component {
                                             </FormItem>
                                             <FormItem
                                                 {...formItemLayout}
+                                                label="海报"
+                                                extra={ <img src={this.state.post} alt="post"/>}>
+                                                {getFieldDecorator('post', {
+                                                    rules: [{required: true, message: '请输入海报 URL！'}],
+                                                })(
+                                                    <Input onChange={this.onHandleChangePostUrl.bind(this)}/>
+                                                )}
+                                            </FormItem>
+                                            <FormItem
+                                                {...formItemLayout}
                                                 label="电影资源上传"
-                                                extra="选择本地MP4电影资源"
                                             >
                                                 {getFieldDecorator('upload', {
                                                     valuePropName: 'fileList',
                                                     getValueFromEvent: this.normFile,
                                                 })(
-                                                    <Upload {...props}>
-                                                        <Button>
-                                                            <Icon type="upload"/> 点击上传
-                                                        </Button>
-                                                    </Upload>
+                                                    <Dragger {...this.uploadProps}>
+                                                        <p className="ant-upload-drag-icon">
+                                                            <Icon type="inbox"/>
+                                                        </p>
+                                                        <p className="ant-upload-text">点击或拖拽文件到此区域上传</p>
+                                                        <p className="ant-upload-hint">所上传电影文件类型为 MP4</p>
+                                                    </Dragger>
                                                 )}
                                             </FormItem>
                                             <FormItem
@@ -441,40 +457,41 @@ class MovieResourceManage extends React.Component {
                                     <br/>
                                     <br/>
                                     <Spin tip="正在删除电影信息，请稍后" spinning={this.state.deleteLoading}>
-                                    <Row>
-                                        <Col span={2}/>
-                                        <Col span={2}>
-                                            <Button icon="delete" type="danger" ghost
-                                                    onClick={this.onHandleConfirmDeleteTips.bind(this)}> 删 除 </Button>
-                                        </Col>
-                                        <Col span={2}/>
-                                        <Col span={10}>
-                                            {
-                                                (data[0] == null || count == null) ? <div></div>
-                                                    :
-                                                    data.map(item =>
-                                                        <div id="movieItem">
-                                                            <Popover content={<img src={item.post} alt="post"/>}
-                                                                     placement="rightTop">
-                                                                <Checkbox value={item.title}
-                                                                          onChange={this.onSelectedMovie.bind(this)}
-                                                                          key={item.title}>{item.title}</Checkbox>
-                                                                <br/><br/>
-                                                            </Popover>
-                                                        </div>
-                                                    )
-                                            }
-                                        </Col>
-                                    </Row>
-                                    <br/>
-                                    <br/>
-                                    <Row>
-                                        <Col span={6}/>
-                                        <Col span={10}>
-                                            <Pagination defaultCurrent={1} total={count} defaultPageSize={12}
-                                                        onChange={this.onPageChange.bind(this)}/>
-                                        </Col>
-                                    </Row>
+                                        <Row>
+                                            <Col span={2}/>
+                                            <Col span={2}>
+                                                <Button icon="delete" type="danger" ghost
+                                                        onClick={this.onHandleConfirmDeleteTips.bind(this)}> 删
+                                                    除 </Button>
+                                            </Col>
+                                            <Col span={2}/>
+                                            <Col span={10}>
+                                                {
+                                                    (data[0] == null || count == null) ? <div></div>
+                                                        :
+                                                        data.map(item =>
+                                                            <div id="movieItem">
+                                                                <Popover content={<img src={item.post} alt="post"/>}
+                                                                         placement="rightTop">
+                                                                    <Checkbox value={item.title}
+                                                                              onChange={this.onSelectedMovie.bind(this)}
+                                                                              key={item.title}>{item.title}</Checkbox>
+                                                                    <br/><br/>
+                                                                </Popover>
+                                                            </div>
+                                                        )
+                                                }
+                                            </Col>
+                                        </Row>
+                                        <br/>
+                                        <br/>
+                                        <Row>
+                                            <Col span={6}/>
+                                            <Col span={10}>
+                                                <Pagination defaultCurrent={1} total={count} defaultPageSize={12}
+                                                            onChange={this.onPageChange.bind(this)}/>
+                                            </Col>
+                                        </Row>
                                     </Spin>
                                     <br/>
                                     <br/>

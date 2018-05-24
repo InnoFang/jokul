@@ -68,4 +68,13 @@ public class MovieUploadController {
                         .build().toString() + ".mp4");
     }
 
+    @PostMapping("/upload")
+    public Result<String>  uploadMovieFile(@RequestParam("file") MultipartFile file) {
+        storageService.store(file);
+        return ResultUtil.success(ResultEnum.UPLOAD_MOVIE_FILE,
+                MvcUriComponentsBuilder.fromMethodName(
+                        MovieUploadController.class, "serveMovie", file.getOriginalFilename())
+                        .build().toString());
+    }
+
 }
