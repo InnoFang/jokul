@@ -2,9 +2,11 @@ package io.innofang.knockknock.controller;
 
 import io.innofang.knockknock.domain.Movie;
 import io.innofang.knockknock.domain.Result;
+import io.innofang.knockknock.domain.Type;
 import io.innofang.knockknock.enums.ResultEnum;
 import io.innofang.knockknock.exception.MovieNotFoundException;
 import io.innofang.knockknock.repositories.MovieRepository;
+import io.innofang.knockknock.repositories.TypeRepository;
 import io.innofang.knockknock.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,7 +14,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Inno Fang on 2018/4/27.
@@ -22,6 +26,9 @@ public class MovieController {
 
     @Autowired
     private MovieRepository movieRepository;
+
+    @Autowired
+    private TypeRepository typeRepository;
 
     @GetMapping(value = "/movie-list/{page}")
     public Result<List<Movie>> getMovieInfoList(@PathVariable("page") int page) {
@@ -44,12 +51,18 @@ public class MovieController {
         return ResultUtil.success(ResultEnum.GET_MOVIE_DETAIL, movie);
     }
 
-    @PostMapping(value = "/add-movie")
-    public Result addMovie(@RequestBody Movie movie) {
+    @PostMapping(value = "/add-movie/{type}")
+    public Result addMovie(@PathVariable("type") String type,
+                           @RequestBody Movie movie) {
         Movie find = movieRepository.findByTitle(movie.getTitle());
-        if (movie != null) {
+        if (find != null) {
             return ResultUtil.error(ResultEnum.MOVIE_DUPLICATE);
         }
+        Set<Type> movieType = new HashSet<>();
+        for (String t : type.split("&")) {
+            movieType.add(typeRepository.findByName(t));
+        }
+        movie.setType(movieType);
         movieRepository.save(movie);
         return ResultUtil.success(ResultEnum.ADD_MOVIE);
     }

@@ -107,8 +107,9 @@ class MovieResourceManage extends React.Component {
         const cast = formData.cast.join(" ");
         const overview = formData.overview;
         const post = formData.post;
+        const movieType = formData.movieType;
 
-        fetch(Api.addMovie(), {
+        fetch(Api.addMovie(movieType), {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -130,10 +131,12 @@ class MovieResourceManage extends React.Component {
         }).then(response => response.json())
             .then(info => {
                 if (info.status !== 1) {
-                    message.error("电影添加失败");
+                    message.error("电影添加失败，请检查电影信息");
                     console.log(`error message: ${info.msg}`);
                 } else {
                     message.success("电影添加成功");
+                    this.setState({post: 'http://via.placeholder.com/300x150?text=post'});
+                    this.props.form.resetFields();
                 }
                 this.setState({uploadLoading: false});
             });
@@ -224,7 +227,7 @@ class MovieResourceManage extends React.Component {
 
     render() {
 
-        let {data, count, selectedMovies} = this.state;
+        let {data, count} = this.state;
 
         const {getFieldDecorator} = this.props.form;
         const formItemLayout = {
@@ -352,7 +355,7 @@ class MovieResourceManage extends React.Component {
                                                 {...formItemLayout}
                                                 label="电影类型"
                                                 hasFeedback>
-                                                {getFieldDecorator('type', {
+                                                {getFieldDecorator('movieType', {
                                                     rules: [
                                                         {required: true, message: '请选择电影类型！'},
                                                     ],
@@ -393,7 +396,9 @@ class MovieResourceManage extends React.Component {
                                                 })(
                                                     <div>
                                                         <Input
-                                                            onChange={this.onHandleChangePostUrl.bind(this)}/>
+                                                            onChange={this.onHandleChangePostUrl.bind(this)}
+                                                            defaultValue={""} />
+                                                        <br />
                                                         <img src={this.state.post} alt="post"/>
                                                     </div>
                                                 )}
