@@ -40,6 +40,7 @@ class MovieResourceManage extends React.Component {
         this.state = {
             post: 'http://via.placeholder.com/300x150?text=post',
             uploadLoading: false,
+            deleteLoading: false,
             data: [],
             count: 0,
             selectedMovies: []
@@ -54,6 +55,7 @@ class MovieResourceManage extends React.Component {
 
     onPageChange(pageNumber) {
         console.log('Page: ', pageNumber);
+        this.setState({selectedMovies: []});
         this.fetchData(pageNumber - 1);
     }
 
@@ -145,9 +147,20 @@ class MovieResourceManage extends React.Component {
         }
     };
 
-    onSelectedMovie(checkedValues) {
-        // console.log('checked = ', checkedValues);
-        this.setState({selectedMovies: checkedValues});
+    onSelectedMovie(e) {
+        const selectedMovies = this.state.selectedMovies;
+        const target = e.target;
+        if (target.checked) {
+            if (selectedMovies.indexOf(target.value) === -1) {
+                selectedMovies.push(target.value);
+            }
+        } else {
+            const index = selectedMovies.indexOf(target.value);
+            if (index !== -1) {
+                selectedMovies.splice(index, 1);
+            }
+        }
+        this.setState({selectedMovies});
     }
 
     onHandleConfirmDeleteTips() {
@@ -156,7 +169,7 @@ class MovieResourceManage extends React.Component {
             notification.info({
                 message: "提醒",
                 description: "未选中任何电影",
-                duration: 3,
+                duration: 2,
                 key,
                 placement: "topLeft",
             })
@@ -166,36 +179,52 @@ class MovieResourceManage extends React.Component {
                     message: '你确认要删除这些电影资源吗？',
                     description: this.state.selectedMovies.join("\n"),
                     key,
-                    btn: (<Button icon="delete" type="danger" ghost onClick={() => notification.close(key)}>
+                    btn: (<Button icon="delete" type="danger" ghost onClick={() => {
+                        notification.close(key);
+                        this.onHandleDeleteMovies();
+                    }}>
                         确 认 </Button>),
                     placement: "topLeft",
-                    onClose: this.onHandleDeleteMovies()
                 }
             )
         }
     }
 
     onHandleDeleteMovies() {
-        console.log('hello');
         const {data, selectedMovies}= this.state;
-        for (let i = 0; i < selectedMovies; i++) {
+
+        for (let i = 0; i < selectedMovies.length; i++) {
             for (let j = 0; j < data.length; j++) {
                 if (selectedMovies[i] === data[j].title) {
                     data.splice(j, 1);
                 }
             }
         }
-        console.log(data);
-        this.setState({selectedMovies: [], data});
+
+        this.setState({selectedMovies: [], data, deleteLoading: true});
+
+        fetch(Api.deleteMovies(selectedMovies), {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+        }).then(response => response.json())
+            .then(info => {
+                if (info.status !== 1) {
+                    message.error("电影删除失败，请刷新");
+                    console.log(`error message: ${info.msg}`);
+                } else {
+                    message.success("电影删除成功");
+                }
+                this.setState({deleteLoading: false});
+            });
     }
 
     render() {
 
         let {data, count, selectedMovies} = this.state;
-
-        if (data[0] == null || count == null) {
-            return <div></div>;
-        }
 
         const {getFieldDecorator} = this.props.form;
         const formItemLayout = {
@@ -406,8 +435,8 @@ class MovieResourceManage extends React.Component {
                                 <TabPane tab={<span><Icon type="delete"/>电影删除</span>} key="2">
                                     <br/>
                                     <br/>
+                                    <Spin tip="正在删除电影信息，请稍后" spinning={this.state.deleteLoading}>
                                     <Row>
-
                                         <Col span={2}/>
                                         <Col span={2}>
                                             <Button icon="delete" type="danger" ghost
@@ -415,19 +444,21 @@ class MovieResourceManage extends React.Component {
                                         </Col>
                                         <Col span={2}/>
                                         <Col span={10}>
-                                            <Checkbox.Group style={{width: '100%'}}
-                                                            onChange={this.onSelectedMovie.bind(this)}>
-                                                {data.map(item =>
-                                                    <div id="movieItem">
-                                                        <Popover content={<img src={item.post} alt="post"/>}
-                                                                 placement="rightTop">
-                                                            <Checkbox value={item.title}
-                                                                      key={item.title}>{item.title}</Checkbox>
-                                                            <br/><br/>
-                                                        </Popover>
-                                                    </div>
-                                                )}
-                                            </Checkbox.Group>
+                                            {
+                                                (data[0] == null || count == null) ? <div></div>
+                                                    :
+                                                    data.map(item =>
+                                                        <div id="movieItem">
+                                                            <Popover content={<img src={item.post} alt="post"/>}
+                                                                     placement="rightTop">
+                                                                <Checkbox value={item.title}
+                                                                          onChange={this.onSelectedMovie.bind(this)}
+                                                                          key={item.title}>{item.title}</Checkbox>
+                                                                <br/><br/>
+                                                            </Popover>
+                                                        </div>
+                                                    )
+                                            }
                                         </Col>
                                     </Row>
                                     <br/>
@@ -435,10 +466,11 @@ class MovieResourceManage extends React.Component {
                                     <Row>
                                         <Col span={6}/>
                                         <Col span={10}>
-                                            <Pagination defaultCurrent={1} total={count} pageSize={12}
+                                            <Pagination defaultCurrent={1} total={count} defaultPageSize={12}
                                                         onChange={this.onPageChange.bind(this)}/>
                                         </Col>
                                     </Row>
+                                    </Spin>
                                     <br/>
                                     <br/>
                                 </TabPane>

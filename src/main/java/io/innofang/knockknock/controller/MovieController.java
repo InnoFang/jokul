@@ -60,4 +60,15 @@ public class MovieController {
         return ResultUtil.success(ResultEnum.DELETE_MOVIE);
     }
 
+    @PostMapping(value = "/delete-more/{movies}")
+    public Result deleteMovies(@PathVariable("movies") String selectedMovies) {
+        for (String movie : selectedMovies.split("&")) {
+            Result result = deleteMovie(movie);
+            if (!result.getStatus().equals(ResultEnum.DELETE_MOVIE.getStatus())) {
+                return result;
+            }
+        }
+        return ResultUtil.success(ResultEnum.DELETE_MORE_MOVIES);
+    }
+
 }
