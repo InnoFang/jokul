@@ -50,4 +50,14 @@ public class MovieController {
         return ResultUtil.success(ResultEnum.ADD_MOVIE);
     }
 
+    @PostMapping(value = "/delete/{title}")
+    public Result deleteMovie(@PathVariable("title") String title) {
+        Movie movie = movieRepository.findByTitle(title);
+        if (movie == null) {
+            return ResultUtil.error(ResultEnum.MOVIE_NOT_FOUND);
+        }
+        movieRepository.delete(movie);
+        return ResultUtil.success(ResultEnum.DELETE_MOVIE);
+    }
+
 }

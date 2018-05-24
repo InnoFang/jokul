@@ -13,6 +13,7 @@ public enum ResultEnum {
     GET_TYPES(1, "successfully to get types"),
     UPLOAD_MOVIE_FILE(1, "successfully to load movie file"),
     ADD_MOVIE(1, "successfully to add movie"),
+    DELETE_MOVIE(1, "successfully to delete movie"),
     GET_MOVIE_COUNT(1, "successfully to get movie count"),
     GET_TYPE_COUNT(1, "successfully to get type count"),
     USER_DUPLICATE(-1, "user duplicated"),

@@ -42,7 +42,7 @@ class MovieResourceManage extends React.Component {
             uploadLoading: false,
             data: [],
             count: 0,
-            selectedMovie: []
+            selectedMovies: []
         }
     }
 
@@ -147,36 +147,51 @@ class MovieResourceManage extends React.Component {
 
     onSelectedMovie(checkedValues) {
         // console.log('checked = ', checkedValues);
-        this.setState({selectedMovie: checkedValues});
+        this.setState({selectedMovies: checkedValues});
     }
 
-    onHandleDelete() {
-        if (this.state.selectedMovie.length === 0) {
+    onHandleConfirmDeleteTips() {
+        const key = `open${Date.now()}`;
+        if (this.state.selectedMovies.length === 0) {
             notification.info({
                 message: "提醒",
                 description: "未选中任何电影",
                 duration: 3,
-                key: `open${Date.now()}`,
-                placement: "topLeft"
+                key,
+                placement: "topLeft",
             })
         } else {
             notification.warning(
                 {
                     message: '你确认要删除这些电影资源吗？',
-                    description: this.state.selectedMovie.join("\n"),
-                    btn: (<Button icon="delete" type="danger" ghost>
+                    description: this.state.selectedMovies.join("\n"),
+                    key,
+                    btn: (<Button icon="delete" type="danger" ghost onClick={() => notification.close(key)}>
                         确 认 </Button>),
-                    key: `open${Date.now()}`,
-                    placement: "topLeft"
+                    placement: "topLeft",
+                    onClose: this.onHandleDeleteMovies()
                 }
             )
         }
+    }
 
+    onHandleDeleteMovies() {
+        console.log('hello');
+        const {data, selectedMovies}= this.state;
+        for (let i = 0; i < selectedMovies; i++) {
+            for (let j = 0; j < data.length; j++) {
+                if (selectedMovies[i] === data[j].title) {
+                    data.splice(j, 1);
+                }
+            }
+        }
+        console.log(data);
+        this.setState({selectedMovies: [], data});
     }
 
     render() {
 
-        let {data, count, selectedMovie} = this.state;
+        let {data, count, selectedMovies} = this.state;
 
         if (data[0] == null || count == null) {
             return <div></div>;
@@ -396,7 +411,7 @@ class MovieResourceManage extends React.Component {
                                         <Col span={2}/>
                                         <Col span={2}>
                                             <Button icon="delete" type="danger" ghost
-                                                    onClick={this.onHandleDelete.bind(this)}> 删 除 </Button>
+                                                    onClick={this.onHandleConfirmDeleteTips.bind(this)}> 删 除 </Button>
                                         </Col>
                                         <Col span={2}/>
                                         <Col span={10}>
