@@ -44,34 +44,16 @@ class MovieResourceManage extends React.Component {
             deleteLoading: false,
             data: [],
             count: 0,
-            selectedMovies: []
+            selectedMovies: [],
+            fileList: [],
         };
 
-        this.uploadProps = {
-            name: 'file',
-            multiple: true,
-            action: Api.uploadMovie(),
-            onChange(info) {
-                console.log(info);
-                message.info("上传完成，结果未知，查看console获取");
-                // const status = info.file.status;
-                // if (status !== 'uploading') {
-                //     console.log(info.file, info.fileList);
-                // }
-                // if (status === 'done') {
-                //     message.success(`${info.file.name} file uploaded successfully.`);
-                // } else if (status === 'error') {
-                //     message.error(`${info.file.name} file upload failed.`);
-                // }
-            },
-        }
     }
 
     componentDidMount() {
         this.fetchDataCount();
         this.fetchData(0);
     }
-
 
     onPageChange(pageNumber) {
         console.log('Page: ', pageNumber);
@@ -248,28 +230,52 @@ class MovieResourceManage extends React.Component {
     render() {
 
         let {data, count} = this.state;
-
+        const that = this;
         const {getFieldDecorator} = this.props.form;
         const formItemLayout = {
             labelCol: {span: 6},
             wrapperCol: {span: 14},
         };
-        const props = {
+
+        const uploadProps = {
+            accept: "video／*",
             name: 'file',
-            action: Api.playMovie(),
-            headers: {
-                authorization: 'authorization-text',
+            listType: 'text',
+            action: Api.uploadMovie(),
+            beforeUpload(file, fileList){
+                that.setState(({fileList}) => ({
+                    fileList: [...fileList, file],
+                }));
+                // return false;
+                // that.setState({fileList});
             },
-            onChange(info) {
-                if (info.file.status !== 'uploading') {
-                    console.log(info.file, info.fileList);
-                }
-                if (info.file.status === 'done') {
-                    message.success(`${info.file.name} file uploaded successfully`);
-                } else if (info.file.status === 'error') {
-                    message.error(`${info.file.name} file upload failed.`);
-                }
-            },
+            fileList: this.state.fileList,
+            customRequest() {
+                const {fileList} = that.state;
+                const formData = new FormData();
+                formData.append("file", fileList[0]);
+                const hide = message.loading('资源上传中', 0);
+                fetch(Api.uploadMovie(), {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        // "Content-Type": "multipart/form-data"
+                    },
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(info => {
+                        setTimeout(hide, 1);
+                        if (info.status !== 1) {
+                            message.error("电影上传失败");
+                            console.log(`error message: ${info.msg}`);
+                        } else {
+                            message.success("电影上传成功");
+                        }
+
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
         };
 
         return (
@@ -431,11 +437,8 @@ class MovieResourceManage extends React.Component {
                                                 {...formItemLayout}
                                                 label="电影资源上传"
                                             >
-                                                {getFieldDecorator('upload', {
-                                                    valuePropName: 'fileList',
-                                                    getValueFromEvent: this.normFile,
-                                                })(
-                                                    <Dragger {...this.uploadProps}>
+                                                {getFieldDecorator('upload')(
+                                                    <Dragger {...uploadProps}>
                                                         <p className="ant-upload-drag-icon">
                                                             <Icon type="inbox"/>
                                                         </p>
