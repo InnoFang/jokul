@@ -121,21 +121,3 @@ class MovieList extends React.Component {
 }
 
 export default MovieList;
-
-/*
- <Col span={4}>
- <MovieCard {...data[0]}/>
- </Col>
- <Col span={1}/>
- <Col span={4}>
- <MovieCard {...data[1]}/>
- </Col>
- <Col span={1}/>
- <Col span={4}>
- <MovieCard {...data[2]}/>
- </Col>
- <Col span={1}/>
- <Col span={4}>
- <MovieCard {...data[0]}/>
- </Col>
- */
