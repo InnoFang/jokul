@@ -298,7 +298,7 @@ class MovieResourceManage extends React.Component {
                                                 {getFieldDecorator('title', {
                                                     rules: [{required: true, message: '请输入电影名！'}],
                                                 })(
-                                                    <Input />
+                                                    <Input className="inputFiled"/>
                                                 )}
                                             </FormItem>
                                             <FormItem
@@ -320,7 +320,7 @@ class MovieResourceManage extends React.Component {
                                                 {getFieldDecorator('alias', {
                                                     rules: [{required: true, message: '请输入电影别名！'}],
                                                 })(
-                                                    <Input />
+                                                    <Input className="inputFiled"/>
                                                 )}
                                             </FormItem>
                                             <FormItem
@@ -338,7 +338,7 @@ class MovieResourceManage extends React.Component {
                                                 {getFieldDecorator('releaseDate', {
                                                     rules: [{required: true, message: '请输入电影电影上映日期！'}],
                                                 })(
-                                                    <Input/>
+                                                    <Input className="inputFiled"/>
                                                 )}
                                             </FormItem>
                                             <FormItem
@@ -420,7 +420,7 @@ class MovieResourceManage extends React.Component {
                                                 {getFieldDecorator('overview', {
                                                     rules: [{required: true, message: '请输入剧情！'}],
                                                 })(
-                                                    <TextArea rows={4}/>
+                                                    <TextArea  className="inputFiled" rows={5}/>
                                                 )}
                                             </FormItem>
                                             <FormItem
@@ -430,7 +430,8 @@ class MovieResourceManage extends React.Component {
                                                 {getFieldDecorator('post', {
                                                     rules: [{required: true, message: '请输入海报 URL！'}],
                                                 })(
-                                                    <Input onChange={this.onHandleChangePostUrl.bind(this)}/>
+                                                    <Input onChange={this.onHandleChangePostUrl.bind(this)}
+                                                           className="inputFiled"/>
                                                 )}
                                             </FormItem>
                                             <FormItem
@@ -451,6 +452,7 @@ class MovieResourceManage extends React.Component {
                                                 wrapperCol={{span: 12, offset: 6}}
                                             >
                                                 <Button type="primary" htmlType="submit"
+                                                        icon="upload"
                                                         loading={this.state.uploadLoading}> 上 传 </Button>
                                             </FormItem>
                                         </Form>
@@ -501,7 +503,6 @@ class MovieResourceManage extends React.Component {
                                 </TabPane>
                             </Tabs>
                         </div>
-
                     </Col>
                     <Col span={5}/>
                 </Row>
