@@ -6,7 +6,9 @@ import React from 'react'
 import {
     Col,
     Row,
-    message
+    message,
+    Button,
+    Tooltip
 } from 'antd';
 import {
     Player,
@@ -23,7 +25,8 @@ class MoviePlay extends React.Component {
         super(props);
         this.state = {
             src: '',
-            isLoading: true
+            isLoading: true,
+            text: '点击下载该电影'
         }
     }
 
@@ -52,9 +55,13 @@ class MoviePlay extends React.Component {
     }
 
     render() {
-        const {src} = this.state;
-        const source = src === '' ? 'cannot play this movie :(' : src;
-        console.log(source);
+        const {src, text} = this.state;
+        const source = src === '' ? '' :
+            <Tooltip placement="right" title={text}>
+                <a href={src}>
+                    <Button icon="download" size="large" shape="circle"/>
+                </a>
+            </Tooltip>;
         return (
             <div>
                 <Row>
@@ -62,18 +69,19 @@ class MoviePlay extends React.Component {
                     <Col span={5}>
                         <h1>{this.props.match.params.movie}</h1>
                         <hr/>
+                        {
+                            source
+                        }
                     </Col>
                 </Row>
                 <br/>
                 <Row>
                     <Col span={4}/>
                     <Col span={18}>
-                        <Player src={source}>
+                        <Player src={src}>
                             <LoadingSpinner />
-                            <BigPlayButton position="center" />
+                            <BigPlayButton position="center"/>
                         </Player>
-                        {/*{https://media.w3.org/2010/05/sintel/trailer_hd.mp4}*/}
-
                     </Col>
                 </Row>
                 <br/>
