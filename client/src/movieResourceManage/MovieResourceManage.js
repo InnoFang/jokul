@@ -275,7 +275,7 @@ class MovieResourceManage extends React.Component {
 
                     })
                     .catch(error => console.error('Error:', error));
-            }
+            },
         };
 
         return (
@@ -443,7 +443,7 @@ class MovieResourceManage extends React.Component {
                                                         <p className="ant-upload-drag-icon">
                                                             <Icon type="inbox"/>
                                                         </p>
-                                                        <p className="ant-upload-text">点击或拖拽文件到此区域上传</p>
+                                                        <p className="ant-upload-text">点击此区域上传电影文件</p>
                                                         <p className="ant-upload-hint">所上传电影文件类型为 MP4</p>
                                                     </Dragger>
                                                 )}

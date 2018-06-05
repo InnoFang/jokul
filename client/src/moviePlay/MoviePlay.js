@@ -69,9 +69,7 @@ class MoviePlay extends React.Component {
                     <Col span={5}>
                         <h1>{this.props.match.params.movie}</h1>
                         <hr/>
-                        {
-                            source
-                        }
+                        {source}
                     </Col>
                 </Row>
                 <br/>
@@ -89,7 +87,6 @@ class MoviePlay extends React.Component {
                 <br/>
                 <br/>
             </div>
-
         );
     }
 }
