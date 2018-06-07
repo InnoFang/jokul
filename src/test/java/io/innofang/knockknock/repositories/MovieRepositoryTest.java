@@ -266,7 +266,7 @@ public class MovieRepositoryTest {
         hacksawRidge.setCast("安德鲁·加菲尔德  萨姆·沃辛顿  文斯·沃恩  雨果·维文  卢克·布雷西  泰莉莎·帕尔墨  瑞切尔·格里菲斯  纳撒尼尔·布佐尼克  理查德·劳斯伯格  马特·纳夫莱  费拉斯·迪拉尼 瑞安·柯尔  卢克·佩格勒");
         hacksawRidge.setOverview("1945年，第二次世界大战接近尾声，作为邪恶轴心重要成员的日本，其嚣张态势已成强弩之末。是年，决定战局走向的冲绳岛战役拉开序幕，成千上万斗志昂扬的美国大兵被派往冲绳，等待他们的则是敌军重兵防守、凶险异常的钢锯岭。在这群人中间，却有一个不愿拿起武器的军医。他名叫戴斯蒙德·道斯（安德鲁·加菲尔德 Andrew Garfield 饰），来自美国的弗吉尼亚。太平洋爆发之际，瘦弱的戴斯蒙德志愿成为救死扶伤的军医而应征入伍。可因童年和家庭的原因，他始终不愿拿起枪支操练，为此宁愿背上拒服兵役的罪名被送上军事法庭。几经周折，戴斯蒙德最终和战友来到了钢锯岭。枪林弹雨，转瞬之间无数人应声倒地。在信仰和信念的支持下，戴斯蒙德仅凭一己之力拯救了数十条濒死的生命…… \n" +
                 "　　本片根据真人真事改编。");
-        hacksawRidge.setPost("https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p2397337958.jpg");
+        hacksawRidge.setPost("https://img3.doubanio.com/view/photo/l/public/p2408209615.webp");
         Set<Type> hacksawRidgeType = new HashSet<>();
         hacksawRidgeType.add(typeRepository.findByName("剧情"));
         hacksawRidgeType.add(typeRepository.findByName("动作"));
