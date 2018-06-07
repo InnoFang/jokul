@@ -98,6 +98,12 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 <br />
 <br />
 
+> Sign In
+
+![](./screenshot/sign_in.jpg)
+
+<br />
+<br />
 
 > Category Page
 
@@ -106,6 +112,21 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 <br />
 <br />
 
+> Add Movie Information and Resource
+
+![](./screenshot/add_movie.jpg)
+
+<br />
+<br />
+
+> Delete Movie Information
+
+![](./screenshot/delete_movie.jpg)
+
+<br />
+<br />
+
+
 > Movie Detail Page
 
 ![](./screenshot/movie_detail.jpg)
@@ -113,6 +134,12 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 <br />
 <br />
 
+> Download the Movie
+
+![](./screenshot/movie_download.jpg)
+
+<br />
+<br />
 
 > Play a Movie
 
