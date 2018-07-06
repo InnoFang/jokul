@@ -82,7 +82,10 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
  + Get a list of movies by type ***GET*** `http://localhost:8080/jokul/{type}/{page}`
  + Get resource links for all the uploaded movies ***GET*** `http://localhost:8080/jokul/movie-src-list`
 
- [Detail](./server_data_interface.md) [More](https://github.com/InnoFang/jokul/blob/master/client/src/Api.js)
+ [Detail](./server_data_interface.md)
+
+ [More](https://github.com/InnoFang/jokul/blob/master/client/src/Api.js)
+ 
 <br />
 
 ## Screenshot
