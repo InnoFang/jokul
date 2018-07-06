@@ -75,7 +75,7 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 
 ## Server data interface
 
- + Get movie list ***GET*** `http://localhost:8080/jokul/movie-list/{page}`
+ + Get movie list ***GET*** `http://localhost:8080/jokul/movie-list/{page}` 
  + Get movie detail ***GET*** `http://localhost:8080/jokul/{title}`
  + Upload movie file ***POST*** `http://localhost:8080/jokul/play/{movie}`
  + Get all the movie types ***GET*** `http://localhost:8080/jokul/types`
@@ -84,6 +84,7 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 
  [Detail](./server_data_interface.md)
 
+ [More](https://github.com/InnoFang/jokul/blob/master/client/src/Api.js)
 <br />
 
 ## Screenshot
