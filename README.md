@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/InnoFang/jokul/master/client/src/images/JOKUL.png?token=AO_t-mh3rDje6XQ0m4-CGgJSNu3axBBQks5a_-s2wA%3D%3D)
 
-**A movie site built by spring boot and react.js**
+**A movie site built by spring boot and react.js based on [front-end](https://github.com/InnoFang/jokul/tree/master/client) and [back-end](https://github.com/InnoFang/jokul/tree/master/src) separation.**
 
 ![](https://img.shields.io/badge/spring%20boot-2.0.1.RELEASE-green.svg)   ![](https://img.shields.io/badge/react-16.3.2-blue.svg) ![](https://img.shields.io/badge/react--router--dom-4.2.2-orange.svg) ![](https://img.shields.io/badge/antd-3.4.4-85C1E9.svg)  ![](https://img.shields.io/badge/Maven-3.5.3-%23CD6155.svg)
 
@@ -86,7 +86,7 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 
 <br />
 
-## User interface
+## Screenshot
 
 <div align="center">
 
