@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/InnoFang/jokul/master/client/src/images/JOKUL.png?token=AO_t-mh3rDje6XQ0m4-CGgJSNu3axBBQks5a_-s2wA%3D%3D"/>
 <br />
 <strong>A movie site built by spring boot and react.js based on <a href="https://github.com/InnoFang/jokul/tree/master/client">front-end</a> and <a href="https://github.com/InnoFang/jokul/tree/master/src">back-end</a> separation.</strong>
-
+<br />
 <img src="https://img.shields.io/badge/spring%20boot-2.0.1.RELEASE-green.svg"/>   <img src="https://img.shields.io/badge/react-16.3.2-blue.svg"/> <img src="https://img.shields.io/badge/react--router--dom-4.2.2-orange.svg"/> <img src="https://img.shields.io/badge/antd-3.4.4-85C1E9.svg"/>  <img src="https://img.shields.io/badge/Maven-3.5.3-%23CD6155.svg"/>
 
 </div>
@@ -93,35 +93,35 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 > Home Page
 
 
-![](../screenshot/home.jpg)
+![](https://github.com/InnoFang/jokul/blob/master/screenshot/home.jpg?raw=true)
 
 <br />
 <br />
 
 > Sign In
 
-![](../screenshot/sign_in.jpg)
+![](https://github.com/InnoFang/jokul/blob/master/screenshot/sign_in.jpg?raw=true)
 
 <br />
 <br />
 
 > Category Page
 
-![](../screenshot/category.jpg)
+![](https://github.com/InnoFang/jokul/blob/master/screenshot/category.jpg?raw=true)
 
 <br />
 <br />
 
 > Add Movie Information and Resource
 
-![](../screenshot/add_movie.jpg)
+![](https://github.com/InnoFang/jokul/blob/master/screenshot/add_movie.jpg?raw=true)
 
 <br />
 <br />
 
 > Delete Movie Information
 
-![](../screenshot/delete_movie.jpg)
+![](https://github.com/InnoFang/jokul/blob/master/screenshot/delete_movie.jpg?raw=true)
 
 <br />
 <br />
@@ -129,21 +129,21 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 
 > Movie Detail Page
 
-![](../screenshot/movie_detail.jpg)
+![](https://github.com/InnoFang/jokul/blob/master/screenshot/movie_download.jpg?raw=true)
 
 <br />
 <br />
 
 > Download the Movie
 
-![](../screenshot/movie_download.jpg)
+![](https://github.com/InnoFang/jokul/blob/master/screenshot/movie_download.jpg?raw=true)
 
 <br />
 <br />
 
 > Play a Movie
 
-![](../screenshot/play_movie.jpg)
+![](https://github.com/InnoFang/jokul/blob/master/screenshot/play_movie.jpg?raw=true)
 
 <br />
 <br />
