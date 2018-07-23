@@ -2,7 +2,9 @@
 
 <img src="https://raw.githubusercontent.com/InnoFang/jokul/master/client/src/images/JOKUL.png?token=AO_t-mh3rDje6XQ0m4-CGgJSNu3axBBQks5a_-s2wA%3D%3D"/>
 <br />
+<br />
 <strong>A movie site built by spring boot and react.js based on <a href="https://github.com/InnoFang/jokul/tree/master/client">front-end</a> and <a href="https://github.com/InnoFang/jokul/tree/master/src">back-end</a> separation.</strong>
+<br />
 <br />
 <img src="https://img.shields.io/badge/spring%20boot-2.0.1.RELEASE-green.svg"/>   <img src="https://img.shields.io/badge/react-16.3.2-blue.svg"/> <img src="https://img.shields.io/badge/react--router--dom-4.2.2-orange.svg"/> <img src="https://img.shields.io/badge/antd-3.4.4-85C1E9.svg"/>  <img src="https://img.shields.io/badge/Maven-3.5.3-%23CD6155.svg"/>
 
