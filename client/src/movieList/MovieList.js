@@ -13,6 +13,11 @@ import MovieCard from '../movieCard/MovieCard'
 import './MovieList.css'
 import Api from '../Api'
 
+/*
+* 一列
+* 其实是一个包装了的单个电影卡片
+* 用于之后行的包装
+* */
 function ACol(props) {
     return (
         <div>
@@ -24,6 +29,13 @@ function ACol(props) {
     )
 }
 
+/*
+* 电影列表行
+* 使用分行分列的简单算法
+* 将单个电影卡片，以一行 4 个进行组合
+* 一共 4 行，组成一页
+* 一页最多 12 个数据
+* */
 function Rows(props) {
     let cols = [];
     const rows = [];
@@ -40,6 +52,9 @@ function Rows(props) {
     return <div>{rows.map(r => <div><br/>{r}</div>)}</div>;
 }
 
+/*
+* 电影列表
+* */
 class MovieList extends React.Component {
     constructor(props) {
         super(props);
@@ -49,17 +64,28 @@ class MovieList extends React.Component {
         }
     }
 
+    /*
+    * 该组件刚加载完成后
+    * 向后台发送请求
+    * 分页获取所有电影列表以及获取当前页的电影数量
+    * 获取数量用来做分行分列处理
+    * */
     componentDidMount() {
         this.fetchDataCount();
         this.fetchData(0);
     }
 
-
+    /*
+    * 处理换页请求
+    * */
     onPageChange(pageNumber) {
         console.log('Page: ', pageNumber);
         this.fetchData(pageNumber - 1);
     }
 
+    /*
+    * 分页后再次向后台发送请求，获取当前页的电影数量
+    * */
     fetchDataCount() {
         // 获取电影数量 get movie count
         fetch(Api.movieCount(), {
@@ -75,6 +101,9 @@ class MovieList extends React.Component {
             .catch(error => console.error('Error:', error));
     }
 
+   /*
+    * 分页后再次向后台发送请求，获取电影列表
+    * */
     fetchData(page) {
         // 获取电影信息列表 get movie info list
         fetch(Api.movieList(page), {

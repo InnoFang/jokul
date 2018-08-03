@@ -26,6 +26,12 @@ import Api from '../Api'
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
 
+/*
+* Header 包含几个选项
+* 1. 主页
+* 2. 分类检索
+* 3. 用户登录、注册、注销、资源管理（管理员）
+* */
 class Header extends React.Component {
 
     constructor(props) {
@@ -42,6 +48,10 @@ class Header extends React.Component {
         }
     }
 
+    /*
+     * 在组件加载完成后
+     * 获取 localStorage 中暂存的用户名以及用户权限
+     * */
     componentWillMount() {
         if (localStorage.username !== '') {
             this.setState({
@@ -52,36 +62,55 @@ class Header extends React.Component {
         }
     };
 
+    /* 设置 modal 框是否可见 */
     setModalVisible(value) {
         this.setState({modalVisible: value});
     };
 
+    /*
+     * 菜单点击状态
+     * Menu 中只有两个选项卡，主页和分类检索
+     * */
     handleMenuClick(e) {
         this.setState({
             current: e.key,
         });
     }
 
+    /*
+    * button 设计为用户按钮
+    * 点击可以登录
+    * 登录后，鼠标滑过会下滑菜单
+    * 可以选择登资源管理（管理员）或者注销
+    * */
     handleButtonClick(e) {
         this.setModalVisible(true);
     }
 
+    /* 处理登录操作 */
     handleSignIn(e) {
         //页面开始向 API 进行提交数据
         e.preventDefault();
 
         this.setState({signInLoading: true});
+
+        // 获取表单
         const formData = this.props.form.getFieldsValue();
         // console.log(formData);
+
+        // 表单数据
         const username = formData.username;
         const password = formData.password;
         const permission = formData.permission ? 1 : 0;
 
+        // 信息简单校验
         if (username === null || password === null) {
             message.warning("信息不能为空");
             this.setState({signUpLoading: false});
             return;
         }
+
+        // 发送登录请求
         fetch(Api.userSignIn(username, password, permission), {
             method: 'POST',
             headers: {
@@ -108,15 +137,23 @@ class Header extends React.Component {
             })
     };
 
+    /* 处理注册操作 */
     handleSignUp(e) {
         e.preventDefault();
+
         this.setState({signUpLoading: true});
+
+        // 获取表单数据
         const formData = this.props.form.getFieldsValue();
         // console.log(formData);
+
+        // 表单数据
         const username = formData.r_username;
         const password = formData.r_password;
         const confirmPassword = formData.r_confirmPassword;
         const permission = formData.r_permission ? 1 : 0;
+
+        // 信息简单校验
         if (username === null || password === null || confirmPassword === null) {
             message.warning("信息不能为空");
             this.setState({signUpLoading: false});
@@ -127,6 +164,8 @@ class Header extends React.Component {
             this.setState({signUpLoading: false});
             return;
         }
+
+        // 向后台发送注册请求
         fetch(Api.userSignUp(username, password, permission), {
             method: 'POST',
             headers: {
@@ -151,15 +190,20 @@ class Header extends React.Component {
                 }
                 this.setState({signUpLoading: false});
             });
-
     }
 
+    /*
+    * 登出操作
+    * 清空 localStorage 中的用户名及用户权限*/
     logout() {
         localStorage.username = '';
         localStorage.permission = '0';
         this.setState({hasLogined: false});
     };
 
+    /*
+    * 根据是否是管理员显示不同的结果
+    * */
     onHandleAdminToggle(e) {
         this.setState({isAdmin: !this.state.isAdmin});
     }

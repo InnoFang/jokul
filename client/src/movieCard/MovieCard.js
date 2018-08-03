@@ -12,6 +12,14 @@ import {
 
 import './MovieCard.css';
 
+/*
+* 电影卡片
+* 用于电影列表展示
+* 展示内容包括：
+*   海报
+*   豆瓣评分
+*   电影名
+* */
 class MovieCard extends React.Component {
 
     render() {

@@ -17,6 +17,11 @@ import {
 import Api from '../Api'
 import './MovieInfo.css'
 
+/*
+* 电影详细信息展示
+* 包括
+* 海报、电影名、评分、别名、发行日期、时长、导演、编剧、概览、电影类型等
+* */
 class MovieInfo extends React.Component {
 
     constructor(props) {
@@ -27,9 +32,11 @@ class MovieInfo extends React.Component {
         }
     }
 
+    /*
+    * 该组件刚加载完成后，向后台请求该电影的详细信息
+    * */
     componentDidMount() {
         this.setState({isLoading: true});
-
 
         fetch(Api.movieDetail(this.props.match.params.title), {
             method: 'GET',

@@ -1,7 +1,11 @@
 /**
  * Created by InnF on 2018/5/12.
+ *
+ * 管理所有的后台请求API
  */
 
+
+/* root url */
 const root = 'http://localhost:8080/jokul';
 
 const Api = {

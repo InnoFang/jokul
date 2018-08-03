@@ -9,7 +9,11 @@ import {
 } from 'antd';
 import './footer.css'
 
+/*
+ * 一个简单的 Footer
+ * */
 class Footer extends React.Component {
+
     render() {
         return (
             <footer id="footer">

@@ -13,6 +13,9 @@ import {
 } from 'antd';
 import './IconTitle.css'
 
+/*
+* 显示 Logo
+* */
 class IconTitle extends React.Component {
 
     render() {

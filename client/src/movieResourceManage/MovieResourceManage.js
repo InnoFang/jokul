@@ -33,6 +33,9 @@ const {TextArea} = Input;
 const TabPane = Tabs.TabPane;
 const Dragger = Upload.Dragger;
 
+/*
+* 电影资源管理页面（管理员）
+* */
 class MovieResourceManage extends React.Component {
 
     constructor(props) {
@@ -48,17 +51,27 @@ class MovieResourceManage extends React.Component {
         };
     }
 
+    /*
+    * 该组件刚在完成时，获取一份电影列表
+    * 用于删除页展示
+    * */
     componentDidMount() {
         this.fetchDataCount();
         this.fetchData(0);
     }
 
+    /*
+    * 在删除也进行页面切换时，进行请求
+    * */
     onPageChange(pageNumber) {
         console.log('Page: ', pageNumber);
         this.setState({selectedMovies: []});
         this.fetchData(pageNumber - 1);
     }
 
+    /*
+    * 分页浏览时，获取当前页的电影数量
+    * */
     fetchDataCount() {
         // 获取电影数量 get movie count
         fetch(Api.movieCount(), {
@@ -73,8 +86,11 @@ class MovieResourceManage extends React.Component {
             .then(info => this.setState({count: info.data}))
             .catch(error => console.error('Error:', error));
     }
-
+    /*
+     * 分页浏览时，获取当前页的电影列表
+     * */
     fetchData(page) {
+
         // 获取电影信息列表 get movie info list
         fetch(Api.movieList(page), {
             method: 'GET',
@@ -89,7 +105,9 @@ class MovieResourceManage extends React.Component {
             .catch(error => console.error('Error:', error));
     }
 
-    /* 提交电影信息，添加电影 */
+    /*
+     * 提交电影信息，添加电影
+     * */
     handleSubmit(e) {
         e.preventDefault();
         this.setState({uploadLoading: true});
@@ -143,6 +161,9 @@ class MovieResourceManage extends React.Component {
             });
     };
 
+    /*
+    * 海报的 URL 正则判断
+    * */
     onHandleChangePostUrl(e) {
         const {value} = e.target;
         const reg = /^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+/;
@@ -151,7 +172,9 @@ class MovieResourceManage extends React.Component {
         }
     };
 
-    /* 在删除电影列表记录已经勾选的电影 */
+    /*
+     * 在删除电影列表记录已经勾选的电影
+     * */
     onSelectedMovie(e) {
         const selectedMovies = this.state.selectedMovies;
         const target = e.target;
@@ -168,7 +191,9 @@ class MovieResourceManage extends React.Component {
         this.setState({selectedMovies});
     }
 
-    /* 电影删除确认提示 */
+    /*
+     * 电影删除确认提示
+     * */
     onHandleConfirmDeleteTips() {
         const key = `open${Date.now()}`;
         if (this.state.selectedMovies.length === 0) {
@@ -196,7 +221,9 @@ class MovieResourceManage extends React.Component {
         }
     }
 
-    /* 删除电影，并向后台提交数据 */
+    /*
+     * 删除电影，并向后台提交数据
+     * */
     onHandleDeleteMovies() {
         const {data, selectedMovies}= this.state;
 

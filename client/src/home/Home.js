@@ -6,6 +6,11 @@ import React from 'react';
 import MovieList from '../movieList/MovieList';
 import IconTitle from '../iconTitle/IconTitle'
 
+/*
+* 主页
+* 包含一个 IconTitle
+* 以及电影列表
+* */
 class Home extends React.Component {
 
     render() {

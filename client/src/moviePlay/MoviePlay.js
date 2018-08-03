@@ -19,6 +19,9 @@ import {
 import './MoviePlay.css'
 import Api from '../Api'
 
+/*
+* 电影播放页面
+* */
 class MoviePlay extends React.Component {
 
     constructor(props) {
@@ -30,7 +33,9 @@ class MoviePlay extends React.Component {
         }
     }
 
-    /* 在组件在家完成后调用，加载电影资源 */
+    /*
+     * 在组件在家完成后调用，加载电影资源
+     * */
     componentDidMount() {
         this.setState({isLoading: true});
         /* 开始播放电影前需要加载资源，此为加载提示 */

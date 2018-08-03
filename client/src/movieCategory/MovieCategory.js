@@ -20,10 +20,17 @@ import './MovieCategory.css';
 import MovieList from '../movieList/MovieList';
 import MovieCategoryList from './MovieCategoryList';
 
+/*
+* 电影分类
+* 包括
+* 剧情、喜剧、惊悚、动作、爱情、犯罪、恐怖、冒险、悬疑、科幻、家庭、奇幻、动画、战争、历史、传记、音乐、歌舞、运动、西部、纪录片
+* 共 21 个类别
+* */
 class MovieCategory extends React.Component {
 
     constructor() {
         super();
+
         this.state = {
             data: [],
             isLoading: false,
@@ -31,6 +38,10 @@ class MovieCategory extends React.Component {
         }
     }
 
+    /*
+    * 该组件刚加载完成后
+    * 向后台获取电影分类列表
+    * */
     componentDidMount() {
         this.setState({isLoading: true});
 
@@ -47,6 +58,10 @@ class MovieCategory extends React.Component {
             .catch(error => console.error('Error:', error));
     }
 
+    /*
+    * 处理点击列表操作
+    * 切换点击的类别标签
+    * */
     handleClick(tag) {
         this.setState({selectedTag: tag});
     }
