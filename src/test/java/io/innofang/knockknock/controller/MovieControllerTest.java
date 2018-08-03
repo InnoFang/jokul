@@ -33,18 +33,9 @@ public class MovieControllerTest {
         System.out.println(handler.getAsyncResult());
     }
 
-    //@Test
-    //@Ignore
-    //public void getMovieList() throws Exception {
-    //    mvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/knockknock/movieinfolist"))
-    //            .andDo(MovieControllerTest::handle)
-    //            .andExpect(MockMvcResultMatchers.status().isOk());
-    //
-    //}
-
     @Test
     @Ignore
     public void findMovieByTitle() {
-        //System.out.println(movieRepository.findByTitle("123"));
+        System.out.println(movieRepository.findByTitle("123"));
     }
 }

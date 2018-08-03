@@ -87,5 +87,4 @@ public class MovieController {
         }
         return ResultUtil.success(ResultEnum.DELETE_MORE_MOVIES);
     }
-
 }

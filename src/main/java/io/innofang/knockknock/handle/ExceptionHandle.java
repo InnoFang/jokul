@@ -32,5 +32,4 @@ public class ExceptionHandle {
         logger.error(e.getMessage());
         return ResultUtil.error(ResultEnum.UNKNOWN_ERROR);
     }
-
 }

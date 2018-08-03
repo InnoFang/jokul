@@ -275,7 +275,7 @@ public class MovieRepositoryTest {
         hacksawRidgeType.add(typeRepository.findByName("战争"));
         hacksawRidge.setType(hacksawRidgeType);
         movies.add(hacksawRidge);
-        */
+
 
         // operation MeiKong 湄公河行动
         Movie operationMeiKong = new Movie();
@@ -295,7 +295,7 @@ public class MovieRepositoryTest {
         operationMeiKongType.add(typeRepository.findByName("犯罪"));
         operationMeiKong.setType(operationMeiKongType);
         movies.add(operationMeiKong);
-
+        */
     }
 
     @Test
@@ -305,5 +305,4 @@ public class MovieRepositoryTest {
             movieRepository.save(movie);
         }
     }
-
 }

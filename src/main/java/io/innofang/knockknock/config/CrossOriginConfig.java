@@ -8,6 +8,8 @@ import org.springframework.web.filter.CorsFilter;
 
 /**
  * Created by Inno Fang on 2018/4/9.
+ *
+ * 跨域解决方案
  */
 @Configuration
 public class CrossOriginConfig {

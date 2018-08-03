@@ -33,5 +33,4 @@ public class ResultUtil {
         result.setMsg(message);
         return result;
     }
-
 }

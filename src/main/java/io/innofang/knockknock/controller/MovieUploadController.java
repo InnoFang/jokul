@@ -76,5 +76,4 @@ public class MovieUploadController {
                         MovieUploadController.class, "serveMovie", file.getOriginalFilename())
                         .build().toString());
     }
-
 }

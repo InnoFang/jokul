@@ -20,9 +20,7 @@ public class HttpAspect {
     public static final Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
     @Pointcut("execution(* io.innofang.knockknock.controller.*.*(..))")
-    public void log() {
-
-    }
+    public void log() { }
 
     @Before("log()")
     public void doBefore(JoinPoint joinPoint) {
