@@ -35,7 +35,6 @@ const Dragger = Upload.Dragger;
 
 class MovieResourceManage extends React.Component {
 
-
     constructor(props) {
         super(props);
         this.state = {
@@ -47,7 +46,6 @@ class MovieResourceManage extends React.Component {
             selectedMovies: [],
             fileList: [],
         };
-
     }
 
     componentDidMount() {
@@ -91,13 +89,14 @@ class MovieResourceManage extends React.Component {
             .catch(error => console.error('Error:', error));
     }
 
+    /* 提交电影信息，添加电影 */
     handleSubmit(e) {
         e.preventDefault();
         this.setState({uploadLoading: true});
 
         const formData = this.props.form.getFieldsValue();
 
-        console.log(formData);
+        // console.log(formData);
 
         const title = formData.title;
         const score = formData.score;
@@ -152,6 +151,7 @@ class MovieResourceManage extends React.Component {
         }
     };
 
+    /* 在删除电影列表记录已经勾选的电影 */
     onSelectedMovie(e) {
         const selectedMovies = this.state.selectedMovies;
         const target = e.target;
@@ -168,6 +168,7 @@ class MovieResourceManage extends React.Component {
         this.setState({selectedMovies});
     }
 
+    /* 电影删除确认提示 */
     onHandleConfirmDeleteTips() {
         const key = `open${Date.now()}`;
         if (this.state.selectedMovies.length === 0) {
@@ -195,6 +196,7 @@ class MovieResourceManage extends React.Component {
         }
     }
 
+    /* 删除电影，并向后台提交数据 */
     onHandleDeleteMovies() {
         const {data, selectedMovies}= this.state;
 
@@ -229,20 +231,27 @@ class MovieResourceManage extends React.Component {
 
     render() {
 
+        // data 为电影列表数据，用于删除页面进行删除
+        // count 为单页获取的电影列表，用于分页
         let {data, count} = this.state;
+
+        /* 在异步调用时，函数体内的 this 不是外部的 this，需要转化 */
         const that = this;
         const {getFieldDecorator} = this.props.form;
+
+        /* 通用表单项属性 */
         const formItemLayout = {
             labelCol: {span: 6},
             wrapperCol: {span: 14},
         };
 
+        /* 电影上传属性 */
         const uploadProps = {
             accept: "video／*",
             name: 'file',
             listType: 'text',
             action: Api.uploadMovie(),
-            beforeUpload(file, fileList){
+            beforeUpload(file, fileList) {
                 that.setState(({fileList}) => ({
                     fileList: [...fileList, file],
                 }));
@@ -420,13 +429,13 @@ class MovieResourceManage extends React.Component {
                                                 {getFieldDecorator('overview', {
                                                     rules: [{required: true, message: '请输入剧情！'}],
                                                 })(
-                                                    <TextArea  className="inputFiled" rows={5}/>
+                                                    <TextArea className="inputFiled" rows={5}/>
                                                 )}
                                             </FormItem>
                                             <FormItem
                                                 {...formItemLayout}
                                                 label="海报"
-                                                extra={ <img src={this.state.post} alt="post"/>}>
+                                                extra={<img src={this.state.post} alt="post"/>}>
                                                 {getFieldDecorator('post', {
                                                     rules: [{required: true, message: '请输入海报 URL！'}],
                                                 })(

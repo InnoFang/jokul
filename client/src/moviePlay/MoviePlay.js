@@ -30,8 +30,10 @@ class MoviePlay extends React.Component {
         }
     }
 
+    /* 在组件在家完成后调用，加载电影资源 */
     componentDidMount() {
         this.setState({isLoading: true});
+        /* 开始播放电影前需要加载资源，此为加载提示 */
         const hide = message.loading('视频资源正在加载，请稍后', 0);
         fetch(Api.playMovie(this.props.match.params.movie), {
             method: 'POST',
