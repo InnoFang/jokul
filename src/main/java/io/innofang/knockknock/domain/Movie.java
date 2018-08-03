@@ -173,5 +173,4 @@ public class Movie {
     public void setType(Set<Type> type) {
         this.type = type;
     }
-
 }

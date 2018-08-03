@@ -85,5 +85,4 @@ public class Type {
     public void setMovies(Set<Movie> movies) {
         this.movies = movies;
     }
-
 }

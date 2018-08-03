@@ -56,5 +56,4 @@ public class User {
     public void setPermission(Integer permission) {
         this.permission = permission;
     }
-
 }
