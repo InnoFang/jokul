@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/InnoFang/jokul/master/client/src/images/JOKUL.png?token=AO_t-mh3rDje6XQ0m4-CGgJSNu3axBBQks5a_-s2wA%3D%3D)
 
-**A movie site built by Spring Boot and React.js based on [front-end](https://github.com/InnoFang/jokul/tree/master/client) and [back-end](https://github.com/InnoFang/jokul/tree/master/src) separation.**
+**A movie site built by Spring Boot and React.js based on [front-end](https://github.com/InnoFang/jokul/tree/master/jokul-client) and [back-end](https://github.com/InnoFang/jokul/tree/master/jokul-server) separation.**
 
 ![](https://img.shields.io/badge/spring%20boot-2.0.1.RELEASE-green.svg)   ![](https://img.shields.io/badge/react-16.3.2-blue.svg) ![](https://img.shields.io/badge/react--router--dom-4.2.2-orange.svg) ![](https://img.shields.io/badge/antd-3.4.4-85C1E9.svg)  ![](https://img.shields.io/badge/Maven-3.5.3-%23CD6155.svg)
 
@@ -23,14 +23,14 @@
 
 For the first run, the server data is empty. You have to add data by yourself and configure your local movie resource.
 
-Luckily, you can use the [test data](https://github.com/InnoFang/jokul/tree/04cd37b3958b04f4f40fa9fb10f6522390ca1c64/src/test/java/io/innofang/knockknock/repositories), But you have to pay attention to the following points :
+Luckily, you can use the [test data](https://github.com/InnoFang/jokul/blob/master/jokul-server/src/test/java/io/innofang/jokul/repositories), But you have to pay attention to the following points :
 
  + You need to run the `TypeRepositoryTest` file first, then run the `MovieRepositoryTest` file, because there is a dependency on `Type` in `Movie`.
  + The test methods mentioned in the above documents are tagged `@Ignore`, so you need to comment out the annotation before running the test data.
 
-After that, set your MySql information and your local movie resource in [application.yml](https://github.com/InnoFang/jokul/blob/410a0b225bca32a41c444d783087adb22a3245bc/src/main/resources/application.yml)
+After that, set your MySql information and your local movie resource in [application.yml](https://github.com/InnoFang/jokul/blob/master/jokul-server/src/main/resources/application.yml)
 
-What must be mentioned is that the role of `storage.resource` in the [application.yml](https://github.com/InnoFang/jokul/blob/410a0b225bca32a41c444d783087adb22a3245bc/src/main/resources/application.yml)
+What must be mentioned is that the role of `storage.resource` in the [application.yml](https://github.com/InnoFang/jokul/blob/master/jokul-server/src/main/resources/application.yml)
 
 ```
 storage:
@@ -50,7 +50,7 @@ Use maven
 
 After a while, you can access the server data.
 
-Reference the [Server data interface](./server_data_interface.md)
+Reference the [Server data interface](./server_data_interfaces.md)
 
 **Last but not least, run the client**
 
@@ -82,9 +82,9 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
  + Get a list of movies by type ***GET*** `http://localhost:8080/jokul/{type}/{page}`
  + Get resource links for all the uploaded movies ***GET*** `http://localhost:8080/jokul/movie-src-list`
 
- [Detail](./server_data_interface.md)
+ [Detail](./server_data_interfaces.md)
 
- [More](https://github.com/InnoFang/jokul/blob/master/client/src/Api.js)
+ [More](https://github.com/InnoFang/jokul/blob/master/jokul-client/src/Api.js)
  
 <br />
 
