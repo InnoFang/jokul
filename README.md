@@ -1,6 +1,6 @@
 <div align="center">
 
-![](https://raw.githubusercontent.com/InnoFang/jokul/master/client/src/images/JOKUL.png?token=AO_t-mh3rDje6XQ0m4-CGgJSNu3axBBQks5a_-s2wA%3D%3D)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/jokul-client/src/images/JOKUL.png)
 
 **A movie site built by Spring Boot and React.js based on [front-end](https://github.com/InnoFang/jokul/tree/master/jokul-client) and [back-end](https://github.com/InnoFang/jokul/tree/master/jokul-server) separation.**
 
@@ -95,35 +95,35 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 > Home Page
 
 
-![](./screenshot/home.jpg)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/home.jpg)
 
 <br />
 <br />
 
 > Sign In
 
-![](./screenshot/sign_in.jpg)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/sign_in.jpg)
 
 <br />
 <br />
 
 > Category Page
 
-![](./screenshot/category.jpg)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/category.jpg)
 
 <br />
 <br />
 
 > Add Movie Information and Resource
 
-![](./screenshot/add_movie.jpg)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/add_movie.jpg)
 
 <br />
 <br />
 
 > Delete Movie Information
 
-![](./screenshot/delete_movie.jpg)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/delete_movie.jpg)
 
 <br />
 <br />
@@ -131,21 +131,21 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 
 > Movie Detail Page
 
-![](./screenshot/movie_detail.jpg)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/movie_detail.jpg)
 
 <br />
 <br />
 
 > Download the Movie
 
-![](./screenshot/movie_download.jpg)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/movie_download.jpg)
 
 <br />
 <br />
 
 > Play a Movie
 
-![](./screenshot/play_movie.jpg)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/play_movie.jpg)
 
 <br />
 <br />
