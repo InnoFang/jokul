@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/InnoFang/jokul/master/client/src/images/JOKUL.png?token=AO_t-mh3rDje6XQ0m4-CGgJSNu3axBBQks5a_-s2wA%3D%3D"/>
+<img src="https://cdn.jsdelivr.net/gh/innofang/jokul/jokul-client/src/images/JOKUL.png"/>
 <br />
 <br />
 <strong>A movie site built by spring boot and react.js based on <a href="https://github.com/InnoFang/jokul/tree/master/client">front-end</a> and <a href="https://github.com/InnoFang/jokul/tree/master/src">back-end</a> separation.</strong>
@@ -52,7 +52,7 @@ Use maven
 
 After a while, you can access the server data.
 
-Reference the [Server data interface](./server_data_interface.md)
+Reference the [Server data interface](../server_data_interfaces.md)
 
 **Last but not least, run the client**
 
@@ -84,46 +84,48 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
  + Get a list of movies by type ***GET*** `http://localhost:8080/jokul/{type}/{page}`
  + Get resource links for all the uploaded movies ***GET*** `http://localhost:8080/jokul/movie-src-list`
 
- [Detail](./server_data_interface.md)
+ [Detail](server_data_interfaces.md)
 
- [More](https://github.com/InnoFang/jokul/blob/master/client/src/Api.js)
+ [More](https://github.com/InnoFang/jokul/blob/master/jokul-client/src/Api.js)
  
 <br />
 
 ## Screenshot
 
+<div align="center">
+
 > Home Page
 
 
-![](https://github.com/InnoFang/jokul/blob/master/screenshot/home.jpg?raw=true)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/home.jpg)
 
 <br />
 <br />
 
 > Sign In
 
-![](https://github.com/InnoFang/jokul/blob/master/screenshot/sign_in.jpg?raw=true)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/sign_in.jpg)
 
 <br />
 <br />
 
 > Category Page
 
-![](https://github.com/InnoFang/jokul/blob/master/screenshot/category.jpg?raw=true)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/category.jpg)
 
 <br />
 <br />
 
 > Add Movie Information and Resource
 
-![](https://github.com/InnoFang/jokul/blob/master/screenshot/add_movie.jpg?raw=true)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/add_movie.jpg)
 
 <br />
 <br />
 
 > Delete Movie Information
 
-![](https://github.com/InnoFang/jokul/blob/master/screenshot/delete_movie.jpg?raw=true)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/delete_movie.jpg)
 
 <br />
 <br />
@@ -131,27 +133,28 @@ Wait few seconds, you can see it in your browser and the url is `http://localhos
 
 > Movie Detail Page
 
-![](https://github.com/InnoFang/jokul/blob/master/screenshot/movie_download.jpg?raw=true)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/movie_detail.jpg)
 
 <br />
 <br />
 
 > Download the Movie
 
-![](https://github.com/InnoFang/jokul/blob/master/screenshot/movie_download.jpg?raw=true)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/movie_download.jpg)
 
 <br />
 <br />
 
 > Play a Movie
 
-![](https://github.com/InnoFang/jokul/blob/master/screenshot/play_movie.jpg?raw=true)
+![](https://cdn.jsdelivr.net/gh/innofang/jokul/screenshot/play_movie.jpg)
 
 <br />
 <br />
- 
+
+</div>
+
 ## [License](https://github.com/InnoFang/jokul/blob/master/LICENSE)
-
 
            Copyright 2018 InnoFang
 
